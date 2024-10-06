@@ -4,18 +4,37 @@ using UnityEngine;
 
 public class Poem : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip _poemSound;
+
+    private Material _material;
+
     void Start()
     {
-        
+        _material = GetComponent<SpriteRenderer>().material;
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Poem collected");
-            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(_poemSound, transform.position, 1.5f);
+            StartCoroutine(FadeOut());
         }
+    }
+
+    public IEnumerator FadeOut()
+    {
+        _material.SetFloat("_Fade", 1);
+
+        float alpha = 1;
+        while (alpha > 0)
+        {
+            alpha -= Time.deltaTime * 1.5f;
+            _material.SetFloat("_Fade", alpha);
+            yield return null;
+        }
+        Destroy(gameObject);
     }
 }
