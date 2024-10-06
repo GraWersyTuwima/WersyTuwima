@@ -10,9 +10,11 @@ public class AlexController : MonoBehaviour
     private float _horizontalInput;
     private float _verticalInput;
 
+    private Animator _animator;
+
     void Start()
     {
-        
+        _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -29,6 +31,8 @@ public class AlexController : MonoBehaviour
         Vector3 direction = new(_horizontalInput, _verticalInput, 0);
         if (direction.magnitude > 1f) direction.Normalize();
         transform.position += _speed * Time.deltaTime * direction;
+
+        _animator.SetBool("IsRunning", direction.magnitude > 0);
     }
 
     private void Flip()
