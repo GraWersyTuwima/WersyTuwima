@@ -19,6 +19,7 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
         if (_canvasGroup.interactable)
         {
             _canvasGroup.interactable = false;
+            AudioManager.Instance.StopSoundWithFade(0.5f);
             StartCoroutine(AudioManager.Instance.FadeInMusic(1f));
             StartCoroutine(HidePoemCompletedOverlay());
         }

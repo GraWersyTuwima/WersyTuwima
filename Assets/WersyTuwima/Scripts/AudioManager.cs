@@ -23,8 +23,9 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _soundSource;
     private AudioSource _musicSource;
-
+    private Coroutine _currentSoundFade;
     private float _musicVolume = 0.5f;
+    private float _soundVolume = 1f;
 
     private void Awake()
     {
@@ -40,6 +41,7 @@ public class AudioManager : MonoBehaviour
         if (!TryGetComponent(out _soundSource))
         {
             _soundSource = gameObject.AddComponent<AudioSource>();
+            _soundSource.volume = _soundVolume;
         }
 
         Transform musicPlayerTransform = transform.Find("Music Player");
@@ -63,7 +65,52 @@ public class AudioManager : MonoBehaviour
     {
         if (clip == null) return;
 
-        _soundSource.PlayOneShot(clip);
+        if (_currentSoundFade != null)
+        {
+            StopCoroutine(_currentSoundFade);
+        }
+
+        _soundSource.volume = _soundVolume;
+        _soundSource.clip = clip;
+        _soundSource.Play();
+    }
+
+    public float GetSoundLength(AudioClip clip)
+    {
+        return clip != null ? clip.length : 0f;
+    }
+
+    public IEnumerator PlaySoundAndWait(AudioClip clip)
+    {
+        if (clip == null) yield break;
+
+        PlaySound(clip);
+        yield return new WaitForSeconds(clip.length);
+    }
+
+    public void StopSoundWithFade(float duration)
+    {
+        if (_currentSoundFade != null)
+        {
+            StopCoroutine(_currentSoundFade);
+        }
+        _currentSoundFade = StartCoroutine(FadeOutSound(duration));
+    }
+
+    private IEnumerator FadeOutSound(float duration)
+    {
+        float startVolume = _soundSource.volume;
+        float startTime = Time.time;
+
+        while (Time.time < startTime + duration)
+        {
+            _soundSource.volume = Mathf.Lerp(startVolume, 0f, (Time.time - startTime) / duration);
+            yield return null;
+        }
+
+        _soundSource.Stop();
+        _soundSource.volume = _soundVolume;
+        _currentSoundFade = null;
     }
 
     public IEnumerator FadeInMusic(float duration)

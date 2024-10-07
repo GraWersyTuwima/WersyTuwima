@@ -32,9 +32,16 @@ public class PoemCounter : MonoBehaviour
 
         if (_poemsCount == _poemsNeeded)
         {
-            StartCoroutine(AudioManager.Instance.FadeOutMusic(1f));
-            AudioManager.Instance.PlaySound(_poemsCollectedSound);
-            StartCoroutine(_poemCompletedOverlay.ShowPoemCompletedOverlay(_poemRecitationSound));
+            StartCoroutine(PlayCompletionSequence());
         }
+    }
+
+    private IEnumerator PlayCompletionSequence()
+    {
+        StartCoroutine(AudioManager.Instance.FadeOutMusic(1f));
+
+        yield return StartCoroutine(AudioManager.Instance.PlaySoundAndWait(_poemsCollectedSound));
+
+        StartCoroutine(_poemCompletedOverlay.ShowPoemCompletedOverlay(_poemRecitationSound));
     }
 }
