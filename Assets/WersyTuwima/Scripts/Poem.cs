@@ -19,7 +19,8 @@ public class Poem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            AudioSource.PlayClipAtPoint(_poemSound, transform.position, 1.5f);
+            AudioManager.Instance.PlaySound(_poemSound);
+            GameObject.FindGameObjectWithTag("PoemCounter").GetComponent<PoemCounter>().IncrementPoemsCount();
             StartCoroutine(FadeOut());
         }
     }
