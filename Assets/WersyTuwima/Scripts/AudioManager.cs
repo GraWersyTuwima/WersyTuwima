@@ -65,4 +65,30 @@ public class AudioManager : MonoBehaviour
 
         _soundSource.PlayOneShot(clip);
     }
+
+    public IEnumerator FadeInMusic(float duration)
+    {
+        float startVolume = _musicSource.volume;
+        float targetVolume = _musicVolume;
+
+        float startTime = Time.time;
+        while (Time.time < startTime + duration)
+        {
+            _musicSource.volume = Mathf.Lerp(startVolume, targetVolume, (Time.time - startTime) / duration);
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeOutMusic(float duration)
+    {
+        float startVolume = _musicSource.volume;
+        float targetVolume = 0f;
+
+        float startTime = Time.time;
+        while (Time.time < startTime + duration)
+        {
+            _musicSource.volume = Mathf.Lerp(startVolume, targetVolume, (Time.time - startTime) / duration);
+            yield return null;
+        }
+    }
 }

@@ -9,6 +9,12 @@ public class PoemCounter : MonoBehaviour
     private TextMeshProUGUI _text;
 
     [SerializeField]
+    private PoemCompletedOverlay _poemCompletedOverlay;
+
+    [SerializeField]
+    private AudioClip _poemRecitationSound;
+
+    [SerializeField]
     private AudioClip _poemsCollectedSound;
 
     private int _poemsCount = 0;
@@ -26,7 +32,9 @@ public class PoemCounter : MonoBehaviour
 
         if (_poemsCount == _poemsNeeded)
         {
+            StartCoroutine(AudioManager.Instance.FadeOutMusic(1f));
             AudioManager.Instance.PlaySound(_poemsCollectedSound);
+            StartCoroutine(_poemCompletedOverlay.ShowPoemCompletedOverlay(_poemRecitationSound));
         }
     }
 }
