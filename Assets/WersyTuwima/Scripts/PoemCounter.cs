@@ -38,7 +38,7 @@ public class PoemCounter : MonoBehaviour
 
     private void PlayCompletionSequence()
     {
-        StartCoroutine(AudioManager.Instance.FadeOutMusic(1f));
+        StartCoroutine(AudioManager.Instance.FadeMusic(1f, false));
 
         AudioManager.Instance.PlaySound(_poemsCollectedSound);
 
