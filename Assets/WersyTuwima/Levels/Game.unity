@@ -1252,8 +1252,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 855638015
-  m_fontColor: {r: 1, g: 1, b: 1, a: 0.19607843}
+    rgba: 2533359615
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _text: {fileID: 397795669}
-  _poemCompletedOverlay: {fileID: 1422304300}
+  _poemCompletedOverlay: {fileID: 1422304301}
   _poemRecitationSound: {fileID: 8300000, guid: efa51af225c756f4ba33709579df2b4c, type: 3}
   _poemsCollectedSound: {fileID: 8300000, guid: 9f7735d8b9ccd684a9809ad5cc8e5648, type: 3}
 --- !u!1 &1220349197
@@ -2160,6 +2160,7 @@ GameObject:
   - component: {fileID: 1422304297}
   - component: {fileID: 1422304296}
   - component: {fileID: 1422304300}
+  - component: {fileID: 1422304301}
   m_Layer: 5
   m_Name: OverlayCanvas
   m_TagString: Untagged
@@ -2265,6 +2266,18 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &1422304301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422304295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27313d5a11e04064187cfaeb929007a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1438863234
 PrefabInstance:
   m_ObjectHideFlags: 0

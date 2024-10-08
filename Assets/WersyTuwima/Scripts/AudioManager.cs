@@ -23,7 +23,6 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _soundSource;
     private AudioSource _musicSource;
-    private Coroutine _currentSoundFade;
     private float _musicVolume = 0.5f;
     private float _soundVolume = 1f;
 
@@ -44,98 +43,54 @@ public class AudioManager : MonoBehaviour
             _soundSource.volume = _soundVolume;
         }
 
-        Transform musicPlayerTransform = transform.Find("Music Player");
-        if (musicPlayerTransform == null)
-        {
-            GameObject musicPlayer = new("Music Player");
-            musicPlayer.transform.parent = transform;
-            _musicSource = musicPlayer.AddComponent<AudioSource>();
+        InitializeMusicPlayer();
+    }
 
-            _musicSource.volume = _musicVolume;
-            _musicSource.playOnAwake = true;
-            _musicSource.loop = true;
-        }
-        else
+    private void InitializeMusicPlayer()
+    {
+        Transform musicPlayerTransform = transform.Find("Music Player");
+        if (musicPlayerTransform != null)
         {
             _musicSource = musicPlayerTransform.GetComponent<AudioSource>();
-        }
-    }
-
-    public void PlaySound(AudioClip clip)
-    {
-        if (clip == null) return;
-
-        if (_currentSoundFade != null)
-        {
-            StopCoroutine(_currentSoundFade);
+            return;
         }
 
-        _soundSource.volume = _soundVolume;
-        _soundSource.clip = clip;
-        _soundSource.Play();
+        GameObject musicPlayer = new("Music Player");
+        musicPlayer.transform.parent = transform;
+        _musicSource = musicPlayer.AddComponent<AudioSource>();
+
+        _musicSource.volume = _musicVolume;
+        _musicSource.playOnAwake = true;
+        _musicSource.loop = true;
     }
 
-    public float GetSoundLength(AudioClip clip)
+    public AudioSource PlaySound(AudioClip clip)
     {
-        return clip != null ? clip.length : 0f;
+        if (clip == null) return null;
+
+        GameObject soundGameObject = new("Sound");
+        AudioSource soundSource = soundGameObject.AddComponent<AudioSource>();
+        soundGameObject.transform.SetParent(transform);
+
+        soundSource.volume = _soundVolume;
+        soundSource.PlayOneShot(clip);
+        Destroy(soundGameObject, clip.length);
+
+        return soundSource;
     }
 
-    public IEnumerator PlaySoundAndWait(AudioClip clip)
+    public IEnumerator FadeAudioSource(AudioSource source, float duration, float targetVolume)
     {
-        if (clip == null) yield break;
-
-        PlaySound(clip);
-        yield return new WaitForSeconds(clip.length);
-    }
-
-    public void StopSoundWithFade(float duration)
-    {
-        if (_currentSoundFade != null)
-        {
-            StopCoroutine(_currentSoundFade);
-        }
-        _currentSoundFade = StartCoroutine(FadeOutSound(duration));
-    }
-
-    private IEnumerator FadeOutSound(float duration)
-    {
-        float startVolume = _soundSource.volume;
+        float startVolume = source.volume;
         float startTime = Time.time;
 
         while (Time.time < startTime + duration)
         {
-            _soundSource.volume = Mathf.Lerp(startVolume, 0f, (Time.time - startTime) / duration);
-            yield return null;
-        }
-
-        _soundSource.Stop();
-        _soundSource.volume = _soundVolume;
-        _currentSoundFade = null;
-    }
-
-    public IEnumerator FadeInMusic(float duration)
-    {
-        float startVolume = _musicSource.volume;
-        float targetVolume = _musicVolume;
-
-        float startTime = Time.time;
-        while (Time.time < startTime + duration)
-        {
-            _musicSource.volume = Mathf.Lerp(startVolume, targetVolume, (Time.time - startTime) / duration);
+            source.volume = Mathf.Lerp(startVolume, targetVolume, (Time.time - startTime) / duration);
             yield return null;
         }
     }
 
-    public IEnumerator FadeOutMusic(float duration)
-    {
-        float startVolume = _musicSource.volume;
-        float targetVolume = 0f;
-
-        float startTime = Time.time;
-        while (Time.time < startTime + duration)
-        {
-            _musicSource.volume = Mathf.Lerp(startVolume, targetVolume, (Time.time - startTime) / duration);
-            yield return null;
-        }
-    }
+    public IEnumerator FadeMusic(float duration, bool fadeIn) => FadeAudioSource(_musicSource, duration, fadeIn ? _musicVolume : 0f);
+    public IEnumerator FadeOutSound(AudioSource soundSource, float duration) => FadeAudioSource(soundSource, duration, 0f);
 }
