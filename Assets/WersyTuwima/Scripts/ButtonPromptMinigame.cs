@@ -29,6 +29,9 @@ public class ButtonPromptMinigame : MonoBehaviour
         {
             GameObject buttonPromptObject = Instantiate(_buttonPromptPrefab, transform);
             ButtonPrompt buttonPrompt = buttonPromptObject.GetComponent<ButtonPrompt>();
+
+            buttonPrompt.TimeToPressSeconds = Mathf.Lerp(1.5f, 0.9f, i / (float)_numberOfPrompts);
+
             buttonPrompt.ShowPrompt();
             yield return new WaitForSeconds(buttonPrompt.TimeToPressSeconds + 0.15f);
 
