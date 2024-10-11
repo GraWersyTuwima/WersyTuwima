@@ -4,15 +4,39 @@ using UnityEngine;
 
 public class ButtonPromptMinigame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField]
+    private GameObject _buttonPromptPrefab;
+
+    [SerializeField]
+    private int _numberOfPrompts = 10;
+
+    private void Update()
     {
-        
+        if (Input.GetKeyUp(KeyCode.Insert))
+        {
+            StartMinigame();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void StartMinigame()
     {
-        
+        StartCoroutine(ShowPrompts());
+    }
+
+    private IEnumerator ShowPrompts()
+    {
+        for (int i = 0; i < _numberOfPrompts; i++)
+        {
+            GameObject buttonPromptObject = Instantiate(_buttonPromptPrefab, transform);
+            ButtonPrompt buttonPrompt = buttonPromptObject.GetComponent<ButtonPrompt>();
+            buttonPrompt.ShowPrompt();
+            yield return new WaitForSeconds(buttonPrompt.TimeToPressSeconds + 0.15f);
+
+            if (!buttonPrompt.IsSuccess)
+            {
+                i = 0;
+                yield return new WaitForSeconds(0.5f);
+            }
+        }
     }
 }

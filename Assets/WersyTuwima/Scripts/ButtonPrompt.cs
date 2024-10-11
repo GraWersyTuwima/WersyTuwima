@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class ButtonPrompt : MonoBehaviour
 {
+    public float TimeToPressSeconds = 2f;
+    public bool IsSuccess { get; set; }
+
+    [SerializeField] private AudioClip _showSound;
+    [SerializeField] private AudioClip _successSound;
+    [SerializeField] private AudioClip _failSound;
+
     private TextMeshProUGUI _text;
     private Animator _animator;
 
@@ -26,7 +33,6 @@ public class ButtonPrompt : MonoBehaviour
 
     private ButtonPromptLetter _currentLetter;
 
-    public float TimeToPressSeconds = 2f;
     private float _timeToPress;
     private bool _isActive;
 
@@ -45,12 +51,15 @@ public class ButtonPrompt : MonoBehaviour
         _text.text = _currentLetter.Letter;
         _timeToPress = Time.time + TimeToPressSeconds;
         _animator.SetTrigger("Show");
+        AudioManager.Instance.PlaySound(_showSound);
     }
 
     public void HidePrompt()
     {
         _animator.SetTrigger("Hide");
         ResetPrompt();
+        IsSuccess = true;
+        AudioManager.Instance.PlaySound(_successSound);
     }
 
     public void FailPrompt()
@@ -59,6 +68,7 @@ public class ButtonPrompt : MonoBehaviour
 
         _animator.SetTrigger("Fail");
         ResetPrompt();
+        AudioManager.Instance.PlaySound(_failSound);
     }
 
     private void ResetPrompt()
@@ -70,11 +80,6 @@ public class ButtonPrompt : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Insert))
-        {
-            ShowPrompt();
-        }
-
         if (!_isActive || _currentLetter == null) return;
 
 
