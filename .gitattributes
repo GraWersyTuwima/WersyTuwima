@@ -1,0 +1,4 @@
+# Ignore ShaderLab and HLSL files in language statistics
+*.shader linguist-detectable=false
+*.hlsl linguist-detectable=false
+*.cginc linguist-detectable=false
