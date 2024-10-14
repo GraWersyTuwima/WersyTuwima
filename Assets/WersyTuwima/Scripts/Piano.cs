@@ -29,6 +29,6 @@ public class Piano : MonoBehaviour
     private void PlayRandomSound()
     {
         int randomIndex = Random.Range(0, pianoSounds.Length);
-        AudioManager.Instance.PlaySound(pianoSounds[randomIndex]);
+        AudioManager.Instance.PlaySound(pianoSounds[randomIndex], 1f);
     }
 }

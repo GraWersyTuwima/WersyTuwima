@@ -23,8 +23,8 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _soundSource;
     private AudioSource _musicSource;
-    private float _musicVolume = 0.4f;
-    private float _soundVolume = 1f;
+    private float _musicVolume = 0.3f;
+    private float _soundVolume = 0.8f;
 
     private void Awake()
     {
@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
         _musicSource.loop = true;
     }
 
-    public AudioSource PlaySound(AudioClip clip)
+    public AudioSource PlaySound(AudioClip clip, float? volume = null)
     {
         if (clip == null) return null;
 
@@ -72,7 +72,7 @@ public class AudioManager : MonoBehaviour
         AudioSource soundSource = soundGameObject.AddComponent<AudioSource>();
         soundGameObject.transform.SetParent(transform);
 
-        soundSource.volume = _soundVolume;
+        soundSource.volume = volume ?? _soundVolume;
         soundSource.PlayOneShot(clip);
         Destroy(soundGameObject, clip.length);
 
