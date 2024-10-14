@@ -23,7 +23,7 @@ public class AudioManager : MonoBehaviour
 
     private AudioSource _soundSource;
     private AudioSource _musicSource;
-    private float _musicVolume = 0.5f;
+    private float _musicVolume = 0.4f;
     private float _soundVolume = 1f;
 
     private void Awake()

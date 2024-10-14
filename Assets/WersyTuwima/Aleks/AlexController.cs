@@ -10,10 +10,12 @@ public class AlexController : MonoBehaviour
     private float _horizontalInput;
     private float _verticalInput;
 
+    private Rigidbody2D _rb;
     private Animator _animator;
 
     void Start()
     {
+        _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
     }
 
@@ -22,15 +24,21 @@ public class AlexController : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
 
-        Move();
         Flip();
+    }
+
+    private void FixedUpdate()
+    {
+        Move();
     }
 
     private void Move()
     {
-        Vector3 direction = new(_horizontalInput, _verticalInput, 0);
+        Vector2 direction = new(_horizontalInput, _verticalInput);
         if (direction.magnitude > 1f) direction.Normalize();
-        transform.position += _speed * Time.deltaTime * direction;
+
+        Vector2 movement = direction * _speed;
+        _rb.velocity = movement;
 
         _animator.SetBool("IsRunning", direction.magnitude > 0);
     }

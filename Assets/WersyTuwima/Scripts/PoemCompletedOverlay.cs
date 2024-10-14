@@ -20,7 +20,10 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
         if (_canvasGroup.interactable)
         {
             _canvasGroup.interactable = false;
-            StartCoroutine(AudioManager.Instance.FadeOutSound(_poemRecitationSource, 1f));
+            if (_poemRecitationSource != null)
+            {
+                StartCoroutine(AudioManager.Instance.FadeOutSound(_poemRecitationSource, 1f));
+            }
             StartCoroutine(AudioManager.Instance.FadeMusic(2f, true));
             StartCoroutine(HidePoemCompletedOverlay());
         }
@@ -39,7 +42,9 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
         _canvasGroup.interactable = true;
 
         yield return new WaitForSeconds(1.5f);
-        _poemRecitationSource = AudioManager.Instance.PlaySound(poemRecitationSound);
+
+        if (_canvasGroup.interactable)
+            _poemRecitationSource = AudioManager.Instance.PlaySound(poemRecitationSound);
     }
 
     private IEnumerator HidePoemCompletedOverlay()

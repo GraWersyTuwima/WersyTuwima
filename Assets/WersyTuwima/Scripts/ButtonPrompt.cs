@@ -42,9 +42,9 @@ public class ButtonPrompt : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void ShowPrompt()
+    public IEnumerator ShowPrompt()
     {
-        if (_isActive) return;
+        if (_isActive) yield break;
 
         _isActive = true;
         _currentLetter = _letters[Random.Range(0, _letters.Length)];
@@ -52,6 +52,8 @@ public class ButtonPrompt : MonoBehaviour
         _timeToPress = Time.time + TimeToPressSeconds;
         _animator.SetTrigger("Show");
         AudioManager.Instance.PlaySound(_showSound);
+
+        yield return new WaitUntil(() => !_isActive);
     }
 
     public void HidePrompt()
