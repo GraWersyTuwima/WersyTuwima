@@ -6,12 +6,12 @@ public class Piano : MonoBehaviour
 {
     public AudioClip[] pianoSounds;
 
-    private Collider2D _pianoCollider;
+    private Collider2D _pianoTrigger;
     private BoxCollider2D _playerCollider;
 
     private void Start()
     {
-        _pianoCollider = GetComponent<Collider2D>();
+        _pianoTrigger = GetComponentInChildren<CapsuleCollider2D>();
         _playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>();
     }
 
@@ -19,7 +19,7 @@ public class Piano : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (_pianoCollider.IsTouching(_playerCollider))
+            if (_pianoTrigger.IsTouching(_playerCollider))
             {
                 PlayRandomSound();
             }

@@ -25,6 +25,7 @@ public class AlexController : MonoBehaviour
         _verticalInput = Input.GetAxis("Vertical");
 
         Flip();
+        _animator.SetBool("IsRunning", _rb.velocity.magnitude > 0.1f);
     }
 
     private void FixedUpdate()
@@ -39,8 +40,6 @@ public class AlexController : MonoBehaviour
 
         Vector2 movement = direction * _speed;
         _rb.velocity = movement;
-
-        _animator.SetBool("IsRunning", direction.magnitude > 0);
     }
 
     private void Flip()
