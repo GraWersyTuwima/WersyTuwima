@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AlexController : MonoBehaviour
@@ -66,16 +67,29 @@ public class AlexController : MonoBehaviour
         {
             if (_isRunning)
             {
-                RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(0, 1.7f, 0),
-                    Vector2.down, 0.1f, LayerMask.GetMask("Ground"));
+                Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 1.7f, 0), 0.1f);
 
-                if (hit.collider == null)
+                AudioClip[] footstepSounds = _grassFootstepSounds;
+
+                foreach (Collider2D col in hitColliders)
+                {
+                    if (col.CompareTag("Planks"))
+                    {
+                        footstepSounds = _planksFootstepSounds;
+                        break;
+                    }
+                }
+
+                if (hitColliders.Any(col => col.CompareTag("Planks")))
+                {
+                    footstepSounds = _planksFootstepSounds;
+                }
+
+                if (hitColliders.Length == 0)
                 {
                     yield return null;
                     continue;
                 }
-
-                AudioClip[] footstepSounds = hit.collider.CompareTag("Grass") ? _grassFootstepSounds : _planksFootstepSounds;
 
                 int randomIndex = Random.Range(0, footstepSounds.Length);
                 AudioManager.Instance.PlaySound(footstepSounds[randomIndex]);
