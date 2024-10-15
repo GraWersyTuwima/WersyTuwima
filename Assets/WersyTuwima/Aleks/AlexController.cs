@@ -71,15 +71,6 @@ public class AlexController : MonoBehaviour
 
                 AudioClip[] footstepSounds = _grassFootstepSounds;
 
-                foreach (Collider2D col in hitColliders)
-                {
-                    if (col.CompareTag("Planks"))
-                    {
-                        footstepSounds = _planksFootstepSounds;
-                        break;
-                    }
-                }
-
                 if (hitColliders.Any(col => col.CompareTag("Planks")))
                 {
                     footstepSounds = _planksFootstepSounds;
