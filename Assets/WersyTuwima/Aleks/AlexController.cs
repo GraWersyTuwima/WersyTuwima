@@ -37,7 +37,7 @@ public class AlexController : MonoBehaviour
 
         Flip();
 
-        _isRunning = _rb.velocity.magnitude > 0.1f;
+        _isRunning = _rb.linearVelocity.magnitude > 0.1f;
         _animator.SetBool("IsRunning", _isRunning);
     }
 
@@ -52,7 +52,7 @@ public class AlexController : MonoBehaviour
         if (direction.magnitude > 1f) direction.Normalize();
 
         Vector2 movement = direction * _speed;
-        _rb.velocity = movement;
+        _rb.linearVelocity = movement;
     }
 
     private void Flip()
