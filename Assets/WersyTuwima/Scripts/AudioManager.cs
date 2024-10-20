@@ -3,6 +3,9 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip _musicClip;
+
     private static AudioManager _instance;
     public static AudioManager Instance
     {
@@ -10,7 +13,7 @@ public class AudioManager : MonoBehaviour
         {
             if (_instance == null)
             {
-                _instance = FindObjectOfType<AudioManager>();
+                _instance = FindAnyObjectByType<AudioManager>();
                 if (_instance == null)
                 {
                     GameObject go = new("Audio Manager");
@@ -59,9 +62,10 @@ public class AudioManager : MonoBehaviour
         musicPlayer.transform.parent = transform;
         _musicSource = musicPlayer.AddComponent<AudioSource>();
 
+        _musicSource.clip = _musicClip;
         _musicSource.volume = _musicVolume;
-        _musicSource.playOnAwake = true;
         _musicSource.loop = true;
+        _musicSource.Play();
     }
 
     public AudioSource PlaySound(AudioClip clip, float? volume = null)

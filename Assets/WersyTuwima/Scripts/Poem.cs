@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Poem : MonoBehaviour
@@ -8,10 +7,12 @@ public class Poem : MonoBehaviour
     private AudioClip _poemSound;
 
     private Material _material;
+    private Animator _animator;
 
     void Start()
     {
         _material = GetComponent<SpriteRenderer>().material;
+        _animator = GetComponent<Animator>();
     }
 
 
@@ -19,6 +20,10 @@ public class Poem : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            GetComponent<Collider2D>().enabled = false;
+            _animator.ResetTrigger("Show");
+            _animator.SetTrigger("Hide");
+
             AudioManager.Instance.PlaySound(_poemSound);
             GameObject.FindGameObjectWithTag("PoemCounter").GetComponent<PoemCounter>().IncrementPoemsCount();
             StartCoroutine(FadeOut());

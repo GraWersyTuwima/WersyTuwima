@@ -8,10 +8,14 @@ public class Piano : MonoBehaviour
 
     private Collider2D _pianoTrigger;
     private BoxCollider2D _playerCollider;
+    private PoemSpawner _poemSpawner;
+
+    private int _counter = 0;
 
     private void Start()
     {
         _pianoTrigger = GetComponentInChildren<CapsuleCollider2D>();
+        _poemSpawner = GetComponentInChildren<PoemSpawner>();
         _playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>();
     }
 
@@ -22,6 +26,12 @@ public class Piano : MonoBehaviour
             if (_pianoTrigger.IsTouching(_playerCollider))
             {
                 PlayRandomSound();
+                _counter++;
+
+                if (_counter == 5)
+                {
+                    _poemSpawner.SpawnPoem();
+                }
             }
         }
     }
