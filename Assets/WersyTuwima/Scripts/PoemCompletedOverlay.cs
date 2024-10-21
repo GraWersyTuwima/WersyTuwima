@@ -13,6 +13,7 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
         _canvasGroup = GetComponent<CanvasGroup>();
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -40,6 +41,7 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
         }
 
         _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
 
         yield return new WaitForSeconds(1.5f);
 
