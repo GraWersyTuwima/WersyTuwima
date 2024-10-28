@@ -1,20 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
-public class HouseDoor : MonoBehaviour
+public class HouseDoor : InteractableObject
 {
-    private SpriteRenderer _spriteRenderer;
-
-    private void Start()
+    protected override void Interact()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("AleksCollider"))
-        {
-            Debug.Log("AleksCollider");
-            _spriteRenderer.color = new Color(0.9f, 0.9f, 0.9f, 1);
-        }
+        Debug.Log("Interakcja z drzwiami");
     }
 }
