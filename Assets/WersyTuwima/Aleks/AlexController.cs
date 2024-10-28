@@ -85,7 +85,7 @@ public class AlexController : MonoBehaviour
                 int randomIndex = Random.Range(0, footstepSounds.Length);
                 AudioManager.Instance.PlaySound(footstepSounds[randomIndex]);
 
-                yield return new WaitForSeconds(0.35f);
+                yield return new WaitForSeconds(Random.Range(0.35f, 0.45f));
             }
             else
             {
