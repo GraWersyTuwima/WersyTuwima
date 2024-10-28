@@ -7,7 +7,7 @@ public class Piano : MonoBehaviour
     public AudioClip[] pianoSounds;
 
     private Collider2D _pianoTrigger;
-    private BoxCollider2D _playerCollider;
+    private Collider2D _playerCollider;
     private PoemSpawner _poemSpawner;
 
     private int _counter = 0;
@@ -16,7 +16,7 @@ public class Piano : MonoBehaviour
     {
         _pianoTrigger = GetComponentInChildren<CapsuleCollider2D>();
         _poemSpawner = GetComponentInChildren<PoemSpawner>();
-        _playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>();
+        _playerCollider = GameObject.FindGameObjectWithTag("AleksCollider").GetComponent<Collider2D>();
     }
 
     private void Update()
