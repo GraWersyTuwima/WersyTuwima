@@ -9,14 +9,19 @@ public abstract class InteractableObject : MonoBehaviour
     protected virtual Color DefaultColor => new(1, 1, 1);
     protected virtual Color HighlightColor => new(0.75f, 0.75f, 0.75f);
 
+    private Collider2D _playerCollider;
+    private Collider2D _objectCollider;
+
     protected virtual void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _playerCollider = GameObject.FindGameObjectWithTag("AleksCollider").GetComponent<Collider2D>();
+        _objectCollider = GetComponent<Collider2D>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && _objectCollider.IsTouching(_playerCollider))
         {
             Interact();
         }
