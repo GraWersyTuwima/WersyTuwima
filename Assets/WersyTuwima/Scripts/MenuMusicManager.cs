@@ -9,6 +9,21 @@ public class MenuMusicManager : MonoBehaviour
 
     private AudioSource _musicSource;
 
+    public static MenuMusicManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         _musicSource = gameObject.AddComponent<AudioSource>();
