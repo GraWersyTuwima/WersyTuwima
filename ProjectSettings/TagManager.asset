@@ -8,6 +8,7 @@ TagManager:
   - Grass
   - Planks
   - AleksCollider
+  - FadePanel
   layers:
   - Default
   - TransparentFX
