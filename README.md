@@ -10,6 +10,10 @@ Gra edukacyjna stworzona na małopolski konkurs "Zagraj (w) Tuwima".
 - **Muzyka:** Wygenerowana przy użyciu modelu sztucznej inteligencji [MusicGen](https://github.com/facebookresearch/audiocraft)
   * Kod modelu: Licencja MIT
   * Wagi modelu: Licencja CC-BY-NC 4.0
+- **Czcionki:**
+  * Autumn in September: Darmowa do użytku osobistego i non-profit
+  * Superstar: Darmowa do użytku osobistego i komercyjnego
+  * Kids Handwriting: Darmowa do użytku osobistego i komercyjnego
 - **Recytacje wierszy:** Autorstwa [@migatomama](https://www.youtube.com/@migatomama) na YouTube.
 
 ## Podziękowania
