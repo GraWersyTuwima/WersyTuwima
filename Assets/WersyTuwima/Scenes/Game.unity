@@ -3037,7 +3037,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b6df873613a8724c8637ef54b804a4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _musicClip: {fileID: 8300000, guid: 8f1e5c075e52e8d4698ecb45950ffec4, type: 3}
+  _musicClips:
+  - {fileID: 8300000, guid: 9adeb27dea2ede243af1ef6ddcf3585c, type: 3}
+  - {fileID: 8300000, guid: 11c4beda7d285eb4c9aa171f3c79cf98, type: 3}
 --- !u!4 &1220349200
 Transform:
   m_ObjectHideFlags: 0
@@ -4789,7 +4791,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
