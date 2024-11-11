@@ -918,7 +918,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainMenuCanvasGroup: {fileID: 1143424668}
-  _menuMusicManager: {fileID: 133576198}
 --- !u!1 &1438106516
 GameObject:
   m_ObjectHideFlags: 0

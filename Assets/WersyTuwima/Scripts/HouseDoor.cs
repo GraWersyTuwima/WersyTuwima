@@ -20,24 +20,26 @@ public class HouseDoor : InteractableObject
     protected override void Interact()
     {
         if (_isTeleporting) return;
-        _isTeleporting = true;
 
         StartCoroutine(Teleport(_teleportPosition));
     }
 
     private IEnumerator Teleport(Vector3 targetPosition)
     {
-        yield return StartCoroutine(Fader.FadeComponent(_fadePanel,
-            (value) => _fadePanel.alpha = value, null, duration: 0.5f, targetValue: 1f));
+        _isTeleporting = true;
 
-        yield return new WaitForSeconds(0.2f);
+        yield return StartCoroutine(Fader.FadeComponent(_fadePanel,
+            (value) => _fadePanel.alpha = value, null, duration: 0.35f, targetValue: 1f));
+
+        yield return new WaitForSeconds(0.1f);
 
         _player.position = targetPosition;
-        _isTeleporting = false;
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
 
         yield return StartCoroutine(Fader.FadeComponent(_fadePanel,
-            (value) => _fadePanel.alpha = value, null, duration: 0.5f, targetValue: 0f));
+            (value) => _fadePanel.alpha = value, null, duration: 0.35f, targetValue: 0f));
+
+        _isTeleporting = false;
     }
 }

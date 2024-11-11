@@ -7,7 +7,7 @@ public abstract class InteractableObject : MonoBehaviour
     private Coroutine _colorCoroutine;
 
     protected virtual Color DefaultColor => new(1, 1, 1);
-    protected virtual Color HighlightColor => new(0.75f, 0.75f, 0.75f);
+    protected virtual Color HighlightColor => new(0.85f, 0.85f, 0.85f);
     protected virtual Collider2D ObjectCollider { get; set; }
 
     private Collider2D _playerCollider;
