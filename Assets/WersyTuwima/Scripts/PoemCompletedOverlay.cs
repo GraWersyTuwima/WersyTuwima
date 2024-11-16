@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField]
+    private TextMeshProUGUI _poemTitle;
+
     private CanvasGroup _canvasGroup;
     private AudioSource _poemRecitationSource;
 
@@ -14,6 +18,11 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
+    }
+
+    public void SetTitle(string title)
+    {
+        _poemTitle.text = $"<voffset=-0.4em>\"</voffset>{title}<voffset=0.1em>\"</voffset>";
     }
 
     public void OnPointerClick(PointerEventData eventData)
