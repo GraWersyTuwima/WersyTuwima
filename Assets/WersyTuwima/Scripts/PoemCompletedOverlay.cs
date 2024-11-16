@@ -41,16 +41,16 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
 
     public IEnumerator ShowPoemCompletedOverlay(AudioClip poemRecitationSound)
     {
-        float alpha = 0;
-        while (alpha < 1)
-        {
-            alpha += Time.deltaTime;
-            _canvasGroup.alpha = alpha;
-            yield return null;
-        }
+        _canvasGroup.alpha = 0;
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
 
-        _canvasGroup.interactable = true;
-        _canvasGroup.blocksRaycasts = true;
+        yield return Fader.FadeComponent(_canvasGroup, (value) => _canvasGroup.alpha = value, () =>
+            {
+                _canvasGroup.interactable = true;
+                _canvasGroup.blocksRaycasts = true;
+            },
+            duration: 1f, targetValue: 1f);
 
         yield return new WaitForSeconds(1.5f);
 
