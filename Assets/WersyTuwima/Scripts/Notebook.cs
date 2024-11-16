@@ -22,6 +22,7 @@ public class Notebook : MonoBehaviour
     public void Toggle()
     {
         _isVisible = !_isVisible;
+        _animator.ResetTrigger(_isVisible ? "Hide" : "Show");
         _animator.SetTrigger(_isVisible ? "Show" : "Hide");
     }
 }
