@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public static class Fader
 {
@@ -11,6 +12,7 @@ public static class Fader
         {
             CanvasGroup canvasGroup => canvasGroup.alpha,
             AudioSource audioSource => audioSource.volume,
+            Image image => image.color.a,
             _ => throw new ArgumentException($"Unsupported component type: {typeof(T)}")
         };
 

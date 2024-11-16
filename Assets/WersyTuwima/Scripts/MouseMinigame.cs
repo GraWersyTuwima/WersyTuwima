@@ -34,14 +34,21 @@ public class MouseMinigame : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(0.75f, 1.5f));
+            yield return new WaitForSeconds(Random.Range(0.5f, 1f));
 
-            var randomMouseHole = _mouseHoles[Random.Range(0, _mouseHoles.Length)];
+            var mouseHole = _mouseHoles[Random.Range(0, _mouseHoles.Length)];
             PlayMouseSound();
 
-            randomMouseHole.Mouse.enabled = true;
-            yield return new WaitForSeconds(Random.Range(0.75f, 1.1f));
-            randomMouseHole.Mouse.enabled = false;
+            mouseHole.Mouse.color = new Color(1, 1, 1, 0);
+            mouseHole.Mouse.enabled = true;
+            StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
+                (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value), null, duration: 0.10f, targetValue: 1f));
+
+            yield return new WaitForSeconds(Random.Range(0.7f, 1f));
+            
+            StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
+                (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value), 
+                () => mouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
         }
     }
 
