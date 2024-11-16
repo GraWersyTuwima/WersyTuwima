@@ -60,12 +60,10 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator HidePoemCompletedOverlay()
     {
-        float alpha = 1;
-        while (alpha > 0)
+        yield return Fader.FadeComponent(_canvasGroup, (value) => _canvasGroup.alpha = value, () =>
         {
-            alpha -= Time.deltaTime;
-            _canvasGroup.alpha = alpha;
-            yield return null;
-        }
+            _canvasGroup.interactable = false;
+            _canvasGroup.blocksRaycasts = false;
+        }, duration: 1f, targetValue: 0f);
     }
 }
