@@ -7,16 +7,32 @@ public class MouseMinigame : MonoBehaviour
     private AudioClip[] _mouseSounds;
 
     private CanvasGroup _canvasGroup;
-
     private MinigameMouseHole[] _mouseHoles;
+
+    [SerializeField]
+    private int _score;
 
     private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
+        _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
 
         _mouseHoles = GetComponentsInChildren<MinigameMouseHole>();
+
+        foreach (var mouseHole in _mouseHoles)
+        {
+            mouseHole.OnMouseClick += () =>
+            {
+                _score++;
+
+                PlayMouseSound();
+                StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
+                    (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value),
+                    () => mouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
+            };
+        }
     }
 
     public void StartMinigame()

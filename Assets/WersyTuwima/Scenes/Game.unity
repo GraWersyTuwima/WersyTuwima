@@ -3342,7 +3342,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1422304295}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -3749,6 +3749,7 @@ MonoBehaviour:
   _mouseSounds:
   - {fileID: 8300000, guid: 7e746fda0baf2314e84d25a8d7bf31cd, type: 3}
   - {fileID: 8300000, guid: 25c40783b7acedb49b2de64b3e33faac, type: 3}
+  _score: 0
 --- !u!225 &1584170141
 CanvasGroup:
   m_ObjectHideFlags: 0
