@@ -18,7 +18,7 @@ public class PoemCounter : MonoBehaviour
     private AudioClip _poemsCollectedSound;
 
     private int _poemsCount = 0;
-    private int _poemsNeeded = 6;
+    private int _poemsNeeded = 1;
 
     private void Start()
     {
