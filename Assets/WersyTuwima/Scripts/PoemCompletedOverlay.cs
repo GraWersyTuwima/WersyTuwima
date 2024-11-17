@@ -41,6 +41,9 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
 
     public IEnumerator ShowPoemCompletedOverlay(AudioClip poemRecitationSound)
     {
+        InteractableObject.CanInteract = false;
+        AlexController.CanMove = false;
+
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
@@ -60,6 +63,9 @@ public class PoemCompletedOverlay : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator HidePoemCompletedOverlay()
     {
+        InteractableObject.CanInteract = true;
+        AlexController.CanMove = true;
+
         yield return Fader.FadeComponent(_canvasGroup, (value) => _canvasGroup.alpha = value, () =>
         {
             _canvasGroup.interactable = false;

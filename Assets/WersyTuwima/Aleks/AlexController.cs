@@ -17,10 +17,21 @@ public class AlexController : MonoBehaviour
     private float _horizontalInput;
     private float _verticalInput;
 
-    private Rigidbody2D _rb;
     private Animator _animator;
 
     private bool _isRunning;
+
+    private static Rigidbody2D _rb;
+    private static bool _canMove = true;
+    public static bool CanMove
+    {
+        get => _canMove;
+        set
+        {
+            _canMove = value;
+            _rb.linearVelocity = Vector2.zero;
+        }
+    }
 
     void Start()
     {
@@ -43,7 +54,7 @@ public class AlexController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
+        if (CanMove) Move();
     }
 
     private void Move()

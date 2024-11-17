@@ -12,6 +12,8 @@ public abstract class InteractableObject : MonoBehaviour
 
     private Collider2D _playerCollider;
 
+    public static bool CanInteract { get; set; } = true;
+
     protected virtual void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -21,6 +23,8 @@ public abstract class InteractableObject : MonoBehaviour
 
     private void Update()
     {
+        if (!CanInteract) return;
+
         if (Input.GetKeyDown(KeyCode.E) && ObjectCollider.IsTouching(_playerCollider))
         {
             Interact();
