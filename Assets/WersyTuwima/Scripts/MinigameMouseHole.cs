@@ -8,6 +8,8 @@ public class MinigameMouseHole : MonoBehaviour
 {
     public Image Mouse { get; private set; }
 
+    public event System.Action OnMouseClick;
+
     private void Start()
     {
         Mouse = transform.GetChild(0).GetComponent<Image>();
@@ -16,7 +18,7 @@ public class MinigameMouseHole : MonoBehaviour
 
     public void ClickMouse()
     {
-        Debug.Log("Clicked on mouse hole");
-        Mouse.enabled = false;
+        if (Mouse.enabled)
+            OnMouseClick?.Invoke();
     }
 }
