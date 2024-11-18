@@ -21,9 +21,9 @@ public class AlexController : MonoBehaviour
 
     private bool _isRunning;
 
-    private static Rigidbody2D _rb;
-    private static bool _canMove = true;
-    public static bool CanMove
+    private Rigidbody2D _rb;
+    private bool _canMove = true;
+    public bool CanMove
     {
         get => _canMove;
         set
@@ -33,8 +33,12 @@ public class AlexController : MonoBehaviour
         }
     }
 
+    public static AlexController Instance { get; private set; }
+
     void Start()
     {
+        Instance = Instance != null ? Instance : this;
+
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
 
