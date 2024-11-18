@@ -5,12 +5,15 @@ using UnityEngine;
 
 public class ButtonPrompt : MonoBehaviour
 {
+    public ButtonPromptMinigame ButtonPromptMinigame { get; set; }
     public float TimeToPressSeconds = 2f;
+    public bool PlaySuccessSound { get; set; } = true;
     public bool IsSuccess { get; set; }
 
     [SerializeField] private AudioClip _showSound;
     [SerializeField] private AudioClip _successSound;
     [SerializeField] private AudioClip _failSound;
+
 
     private TextMeshProUGUI _text;
     private Animator _animator;
@@ -61,7 +64,9 @@ public class ButtonPrompt : MonoBehaviour
         _animator.SetTrigger("Hide");
         ResetPrompt();
         IsSuccess = true;
-        AudioManager.Instance.PlaySound(_successSound);
+        if (PlaySuccessSound)
+            AudioManager.Instance.PlaySound(_successSound);
+        ButtonPromptMinigame.InvokeCorrectClick();
     }
 
     public void FailPrompt()

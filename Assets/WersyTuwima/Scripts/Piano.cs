@@ -7,24 +7,34 @@ public class Piano : InteractableObject
     public AudioClip[] pianoSounds;
 
     private PoemSpawner _poemSpawner;
-
-    private int _counter = 0;
+    private ButtonPromptMinigame _buttonPromptMinigame;
 
     private void Start()
     {
         _poemSpawner = GetComponentInChildren<PoemSpawner>();
+        _buttonPromptMinigame = GetComponentInChildren<ButtonPromptMinigame>();
         ObjectCollider = GetComponentInChildren<CapsuleCollider2D>();
     }
 
     protected override void Interact()
     {
-        PlayRandomSound();
-        _counter++;
+        InteractableObject.CanInteract = false;
+        AlexController.Instance.CanMove = false;
 
-        if (_counter == 5)
+        _buttonPromptMinigame.OnCorrectClick += () =>
+        {
+            PlayRandomSound();
+        };
+
+        _buttonPromptMinigame.OnFinish += () =>
         {
             _poemSpawner.SpawnPoem();
-        }
+            InteractableObject.CanInteract = true;
+            AlexController.Instance.CanMove = true;
+        };
+
+        _buttonPromptMinigame.PlaySuccessSound = false;
+        _buttonPromptMinigame.StartMinigame();
     }
 
     private void PlayRandomSound()
