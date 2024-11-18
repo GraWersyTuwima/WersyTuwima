@@ -342,11 +342,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72313642}
   m_CullTransparentMesh: 1
---- !u!224 &101360060 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-  m_PrefabInstance: {fileID: 6299195014888115952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220203651
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +573,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 101360060}
   - {fileID: 1584170137}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1557,7 +1551,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1000}
+  m_AnchoredPosition: {x: 0, y: -1200}
   m_SizeDelta: {x: 32, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761818498
@@ -1632,9 +1626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c0a7a3f082d3d43bfbb8debd65d542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _notebookText: "Pan Hilary szuka czego\u015B... Sprawdzi\u0107:\n- w butach (prawym
-    i lewym?)\n- w szafie (wszystko poprzewraca\u0142!)\n- w piecu i k...? (kominie?)\n-
-    w mysiej dziurze i pianinie\n- na czym\u015B mi\u0119kkim (kanapa?)"
+  _notebookText: "Gdzie one mog\u0105 by\u0107?\n\nTa stara szafa...\nPianino w domu?\nMyszy
+    tutaj chodz\u0105...\nTo lustro... wygl\u0105da dziwnie."
 --- !u!1 &782253715
 GameObject:
   m_ObjectHideFlags: 0
@@ -4273,9 +4266,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pan Hilary szuka czego\u015B... Sprawdzi\u0107:\n- w butach (prawym i
-    lewym?)\n- w szafie (wszystko poprzewraca\u0142!)\n- w piecu i k...? (kominie?)\n-
-    w mysiej dziurze i pianinie\n- na czym\u015B mi\u0119kkim (kanapa?)"
+  m_text: "Gdzie one mog\u0105 by\u0107?\n\nTa stara szafa...\nPianino w domu?\nMyszy
+    tutaj chodz\u0105...\nTo lustro... wygl\u0105da dziwnie."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd9528dc4dcd7be4e95922488123123a, type: 2}
   m_sharedMaterial: {fileID: -8389304777286286567, guid: bd9528dc4dcd7be4e95922488123123a, type: 2}
@@ -4302,8 +4294,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.5
-  m_fontSizeBase: 1.5
+  m_fontSize: 1.4
+  m_fontSizeBase: 1.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4314,7 +4306,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 180
+  m_lineSpacing: 200
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -4516,11 +4508,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1962786088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7521391103656610368, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-  m_PrefabInstance: {fileID: 6299195014888115952}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1964515252
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,111 +5716,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6782783614235250382}
   m_CullTransparentMesh: 1
---- !u!1001 &6299195014888115952
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 243278284}
-    m_Modifications:
-    - target: {fileID: 4970825901316280626, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
-      value: 1801810542
-      objectReference: {fileID: 0}
-    - target: {fileID: 6236081697477500987, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_Alpha
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 250
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6357407215749951255, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521391103656610368, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
-      propertyPath: m_Name
-      value: Prompt
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
 --- !u!114 &6413919020873661091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6312,7 +6194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af8a5ac26ce5ad64a8d93808d0f51ace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonPromptPrefab: {fileID: 1962786088}
+  _minigameCanvas: {fileID: 243278283}
+  _buttonPromptPrefab: {fileID: 7521391103656610368, guid: 18cebaac7b3d70c42b7a81fa6c982cba, type: 3}
   _numberOfPrompts: 10
 --- !u!70 &8552649582403200640
 CapsuleCollider2D:
