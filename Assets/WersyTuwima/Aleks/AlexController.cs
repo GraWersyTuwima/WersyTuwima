@@ -50,7 +50,7 @@ public class AlexController : MonoBehaviour
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
 
-        Flip();
+        if (CanMove) Flip();
 
         _isRunning = _rb.linearVelocity.magnitude > 0.1f;
         _animator.SetBool("IsRunning", _isRunning);
