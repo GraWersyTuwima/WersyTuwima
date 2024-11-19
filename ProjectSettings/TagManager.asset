@@ -49,6 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: MirrorReflection
+    uniqueID: 3044951483
+    locked: 0
   - name: Player
     uniqueID: 3626889299
     locked: 0
