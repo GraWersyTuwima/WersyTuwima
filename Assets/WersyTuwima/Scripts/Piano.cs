@@ -18,7 +18,7 @@ public class Piano : InteractableObject
 
     protected override void Interact()
     {
-        InteractableObject.CanInteract = false;
+        InteractableObject.AnyInteractionsEnabled = false;
         AlexController.Instance.CanMove = false;
 
         _buttonPromptMinigame.OnCorrectClick += () =>
@@ -29,8 +29,9 @@ public class Piano : InteractableObject
         _buttonPromptMinigame.OnFinish += () =>
         {
             _poemSpawner.SpawnPoem();
-            InteractableObject.CanInteract = true;
+            InteractableObject.AnyInteractionsEnabled = true;
             AlexController.Instance.CanMove = true;
+            IsInteractable = false;
         };
 
         _buttonPromptMinigame.PlaySuccessSound = false;

@@ -37,7 +37,7 @@ public class MouseMinigame : MonoBehaviour
 
     public void StartMinigame()
     {
-        InteractableObject.CanInteract = false;
+        InteractableObject.AnyInteractionsEnabled = false;
         AlexController.Instance.CanMove = false;
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;

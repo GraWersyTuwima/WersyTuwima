@@ -6,13 +6,14 @@ public abstract class InteractableObject : MonoBehaviour
     protected SpriteRenderer _spriteRenderer;
     private Coroutine _colorCoroutine;
 
+    protected virtual bool IsInteractable { get; set; } = true;
     protected virtual Color DefaultColor => new(1, 1, 1);
     protected virtual Color HighlightColor => new(0.85f, 0.85f, 0.85f);
     protected virtual Collider2D ObjectCollider { get; set; }
 
     private Collider2D _playerCollider;
 
-    public static bool CanInteract { get; set; } = true;
+    public static bool AnyInteractionsEnabled { get; set; } = true;
 
     protected virtual void Awake()
     {
@@ -23,7 +24,7 @@ public abstract class InteractableObject : MonoBehaviour
 
     private void Update()
     {
-        if (!CanInteract) return;
+        if (!AnyInteractionsEnabled || !IsInteractable) return;
 
         if (Input.GetKeyDown(KeyCode.E) && ObjectCollider.IsTouching(_playerCollider))
         {
@@ -35,6 +36,8 @@ public abstract class InteractableObject : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (!AnyInteractionsEnabled || !IsInteractable) return;
+
         if (other.CompareTag("AleksCollider"))
         {
             RunColorChangeCoroutine(HighlightColor);
