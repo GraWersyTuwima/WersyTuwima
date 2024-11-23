@@ -28,13 +28,6 @@ public class Mirror : MonoBehaviour
         _reflection.localScale = new Vector3(isPlayerFlipped ? -1 : 1, 1, 1);
 
         SyncAnimator();
-
-        // This solution is far from perfect, because it changes the transparency
-        // of individual parts, but Unity has no simple way to fix it.
-        ApplyForAllParts(_reflection, (spriteRenderer) =>
-        {
-            spriteRenderer.color = new Color(1, 1, 1, 0.5f);
-        });
     }
 
     private void ApplyForAllParts(Transform parent, System.Action<SpriteRenderer> action)
