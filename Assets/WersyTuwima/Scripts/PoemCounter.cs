@@ -23,6 +23,7 @@ public class PoemCounter : MonoBehaviour
     private void Start()
     {
         _text.text = $"{_poemsCount}/{_poemsNeeded}";
+        _poemCompletedOverlay.SetTitle("Okulary");
     }
 
     public void IncrementPoemsCount()
