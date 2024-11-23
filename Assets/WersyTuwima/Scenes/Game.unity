@@ -5621,6 +5621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5c0a7a3f082d3d43bfbb8debd65d542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _parentPanel: {fileID: 1543139715}
 --- !u!4 &762897327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7573084404785999140, guid: c5ce1b16a82335e4dbd9c7e355820331, type: 3}
@@ -10684,6 +10685,7 @@ GameObject:
   - component: {fileID: 1543139714}
   - component: {fileID: 1543139716}
   - component: {fileID: 1543139715}
+  - component: {fileID: 1543139717}
   m_Layer: 5
   m_Name: NotebookPanel
   m_TagString: Untagged
@@ -10749,6 +10751,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543139713}
   m_CullTransparentMesh: 1
+--- !u!114 &1543139717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543139713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 761818501}
+          m_TargetAssemblyTypeName: Notebook, Assembly-CSharp
+          m_MethodName: Toggle
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!4 &1548317977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7573084404785999140, guid: c5ce1b16a82335e4dbd9c7e355820331, type: 3}
@@ -16412,6 +16443,7 @@ SceneRoots:
   - {fileID: 139528877}
   - {fileID: 295821149}
   - {fileID: 1060997694}
+  - {fileID: 1643559848}
   - {fileID: 806729910}
   - {fileID: 220594770}
   - {fileID: 1183624371}
@@ -16423,4 +16455,3 @@ SceneRoots:
   - {fileID: 1467108144461329804}
   - {fileID: 878568953}
   - {fileID: 1481294827}
-  - {fileID: 1643559848}

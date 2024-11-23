@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Introduction : MonoBehaviour
 {
@@ -13,5 +14,13 @@ public class Introduction : MonoBehaviour
     {
         _notebook.SetText(_introductionText);
         _notebook.Toggle();
+
+        CanvasGroup fadePanel = GameObject.FindGameObjectWithTag("FadePanel").GetComponent<CanvasGroup>();
+
+        fadePanel.interactable = false;
+        fadePanel.blocksRaycasts = false;
+        fadePanel.alpha = 1f;
+        StartCoroutine(Fader.FadeComponent(fadePanel,
+            (value) => fadePanel.alpha = value, null, targetValue: 0f));
     }
 }
