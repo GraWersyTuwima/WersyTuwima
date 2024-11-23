@@ -9,6 +9,7 @@ TagManager:
   - Planks
   - AleksCollider
   - FadePanel
+  - Notebook
   layers:
   - Default
   - TransparentFX

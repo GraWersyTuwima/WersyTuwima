@@ -398,6 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teleportPosition: {x: -33.25, y: -3, z: 0}
+  _noteName: Pusta
 --- !u!212 &24223367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5524,7 +5525,7 @@ GameObject:
   - component: {fileID: 761818500}
   m_Layer: 5
   m_Name: Notebook
-  m_TagString: Untagged
+  m_TagString: Notebook
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8089,6 +8090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teleportPosition: {x: -112.32, y: 6, z: 0}
+  _noteName: Okulary
 --- !u!61 &1098089049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11693,12 +11695,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _notebook: {fileID: 761818501}
-  _introductionText: "Witaj w grze Wersy Tuwima!\nGrasz jako Aleks - ch\u0142opiec,
-    kt\xF3ry chce\nzapozna\u0107 si\u0119 z jak najwi\u0119ksz\u0105 liczb\u0105\ntw\xF3rczo\u015Bci
-    Juliana Tuwima.\nB\u0119dziesz eksplorowa\u0142 miejsca z wierszy\ni bawi\u0142
-    si\u0119 w gry nawi\u0105zuj\u0105ce do nich!\n\nMo\u017Cesz otwiera\u0107 ten
-    notatnik klikaj\u0105c w\nlicznik post\u0119pu w prawym g\xF3rnym rogu.\n\nMi\u0142ej
-    gry!"
 --- !u!4 &1643559848
 Transform:
   m_ObjectHideFlags: 0
