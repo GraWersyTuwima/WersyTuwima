@@ -3,14 +3,16 @@ using UnityEngine;
 
 public class MouseMinigame : MonoBehaviour
 {
-    [SerializeField]
-    private AudioClip[] _mouseSounds;
+    [SerializeField] private int _score;
+    [SerializeField] private int _neededScore = 15;
+
+    [SerializeField] private AudioClip[] _mouseSounds;
+    [SerializeField] private PoemSpawner _poemSpawner;
+
 
     private CanvasGroup _canvasGroup;
     private MinigameMouseHole[] _mouseHoles;
-
-    [SerializeField]
-    private int _score;
+    private Coroutine _showMiceCoroutine;
 
     private void Start()
     {
@@ -23,16 +25,35 @@ public class MouseMinigame : MonoBehaviour
 
         foreach (var mouseHole in _mouseHoles)
         {
-            mouseHole.OnMouseClick += () =>
-            {
-                _score++;
-
-                PlayMouseSound();
-                StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
-                    (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value),
-                    () => mouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
-            };
+            mouseHole.OnMouseClick += () => OnMouseClick(mouseHole);
         }
+    }
+
+    public void OnMouseClick(MinigameMouseHole mouseHole)
+    {
+        _score++;
+
+        PlayMouseSound();
+        StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
+            (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value),
+            () => mouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
+
+        if (_score >= _neededScore)
+        {
+            Win();
+        }
+    }
+
+    public void Win()
+    {
+        if (_showMiceCoroutine != null) StopCoroutine(_showMiceCoroutine);
+
+        InteractableObject.AnyInteractionsEnabled = true;
+        AlexController.Instance.CanMove = true;
+        StartCoroutine(Fader.FadeComponent(_canvasGroup,
+            (value) => _canvasGroup.alpha = value, null, duration: 0.5f, targetValue: 0f));
+
+        _poemSpawner.SpawnPoem();
     }
 
     public void StartMinigame()
@@ -45,7 +66,7 @@ public class MouseMinigame : MonoBehaviour
         StartCoroutine(Fader.FadeComponent(_canvasGroup,
             (value) => _canvasGroup.alpha = value, null, duration: 0.5f, targetValue: 1f));
 
-        StartCoroutine(ShowMice());
+        _showMiceCoroutine = StartCoroutine(ShowMice());
     }
 
     private IEnumerator ShowMice()
