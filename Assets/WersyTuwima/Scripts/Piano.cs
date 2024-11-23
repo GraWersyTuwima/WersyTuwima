@@ -9,6 +9,8 @@ public class Piano : InteractableObject
     private PoemSpawner _poemSpawner;
     private ButtonPromptMinigame _buttonPromptMinigame;
 
+    private bool _hasPlayedPiano = false;
+
     private void Start()
     {
         _poemSpawner = GetComponentInChildren<PoemSpawner>();
@@ -17,6 +19,19 @@ public class Piano : InteractableObject
     }
 
     protected override void Interact()
+    {
+        if (!_hasPlayedPiano)
+        {
+            _hasPlayedPiano = true;
+            RunMinigame();
+        }
+        else
+        {
+            PlayRandomSound();
+        }
+    }
+
+    private void RunMinigame()
     {
         InteractableObject.AnyInteractionsEnabled = false;
         AlexController.Instance.CanMove = false;
@@ -31,7 +46,6 @@ public class Piano : InteractableObject
             _poemSpawner.SpawnPoem();
             InteractableObject.AnyInteractionsEnabled = true;
             AlexController.Instance.CanMove = true;
-            IsInteractable = false;
         };
 
         _buttonPromptMinigame.PlaySuccessSound = false;
