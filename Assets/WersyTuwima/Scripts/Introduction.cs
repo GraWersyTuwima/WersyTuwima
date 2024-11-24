@@ -9,7 +9,7 @@ public class Introduction : MonoBehaviour
 
     private void Start()
     {
-        _notebook.SetText("Wprowadzenie");
+        _notebook.SetText(Notebook.Note.Wprowadzenie);
         _notebook.Toggle();
 
         _notebook.OnVisibilityChanged += OnNotebookVisibilityChanged;
@@ -32,6 +32,6 @@ public class Introduction : MonoBehaviour
     private IEnumerator ResetNotebook()
     {
         yield return new WaitForSeconds(0.25f);
-        _notebook.SetText("Pusta");
+        _notebook.SetText(Notebook.Note.Pusta);
     }
 }

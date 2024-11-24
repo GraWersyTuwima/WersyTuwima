@@ -16,12 +16,20 @@ public class Notebook : MonoBehaviour
 
     public event Action<bool> OnVisibilityChanged;
 
-    public Dictionary<string, string> Notes { get; } = new()
+    public enum Note
     {
-        { "Pusta", "Hmmm... Co jeszcze mo¿na tu zrobiæ?" },
-        { "Wprowadzenie", "Witaj w grze Wersy Tuwima!\nGrasz jako Aleks - ch³opiec, który chce\nzapoznaæ siê z jak najwiêksz¹ liczb¹\ntwórczoœci Juliana Tuwima.\nBêdziesz eksplorowa³ miejsca z wierszy\ni bawi³ siê w gry nawi¹zuj¹ce do nich!\n\nMo¿esz otwieraæ ten notatnik klikaj¹c w\nlicznik postêpu w prawym górnym rogu.\n\nMi³ej gry!" },
-        { "Okulary", "Gdzie one mog¹ byæ?\n\nTa stara szafa...\nPianino w domu?\nMyszy tutaj chodz¹...\nTo lustro... wygl¹da dziwnie." },
-        { "Koniec", "Koniec gry" },
+        Pusta,
+        Wprowadzenie,
+        Okulary,
+        Koniec,
+    }
+
+    public Dictionary<Note, string> Notes { get; } = new()
+    {
+        { Note.Pusta, "Hmmm... Co jeszcze mo¿na tu zrobiæ?" },
+        { Note.Wprowadzenie, "Witaj w grze Wersy Tuwima!\nGrasz jako Aleks - ch³opiec, który chce\nzapoznaæ siê z jak najwiêksz¹ liczb¹\ntwórczoœci Juliana Tuwima.\nBêdziesz eksplorowa³ miejsca z wierszy\ni bawi³ siê w gry nawi¹zuj¹ce do nich!\n\nMo¿esz otwieraæ ten notatnik klikaj¹c w\nlicznik postêpu w prawym górnym rogu.\n\nMi³ej gry!" },
+        { Note.Okulary, "Gdzie one mog¹ byæ?\n\nTa stara szafa...\nPianino w domu?\nMyszy tutaj chodz¹...\nTo lustro... wygl¹da dziwnie." },
+        { Note.Koniec, "Koniec gry" },
     };
 
     private void Awake()
@@ -42,15 +50,15 @@ public class Notebook : MonoBehaviour
         OnVisibilityChanged?.Invoke(_isVisible);
     }
 
-    public void SetText(string noteName)
+    public void SetText(Note note)
     {
-        if (Notes.TryGetValue(noteName, out string note))
+        if (Notes.TryGetValue(note, out string noteText))
         {
-            _text.text = note;
+            _text.text = noteText;
         }
         else
         {
-            Debug.LogWarning($"Note with name {noteName} not found.");
+            Debug.LogWarning($"Note with name {note} not found.");
         }
     }
 }
