@@ -11437,6 +11437,7 @@ MonoBehaviour:
   _mouseSounds:
   - {fileID: 8300000, guid: 7e746fda0baf2314e84d25a8d7bf31cd, type: 3}
   - {fileID: 8300000, guid: 25c40783b7acedb49b2de64b3e33faac, type: 3}
+  _clickSound: {fileID: 8300000, guid: 20f48cbe1f3e1dd40a8cc35d0dc283bc, type: 3}
   _poemSpawner: {fileID: 1484408567}
 --- !u!225 &1584170141
 CanvasGroup:

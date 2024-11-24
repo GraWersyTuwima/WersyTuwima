@@ -7,11 +7,13 @@ public class MouseMinigame : MonoBehaviour
     [SerializeField] private int _neededScore = 15;
 
     [SerializeField] private AudioClip[] _mouseSounds;
-    [SerializeField] private PoemSpawner _poemSpawner;
+    [SerializeField] private AudioClip _clickSound;
 
+    [SerializeField] private PoemSpawner _poemSpawner;
 
     private CanvasGroup _canvasGroup;
     private MinigameMouseHole[] _mouseHoles;
+    private MinigameMouseHole _currentMouseHole;
     private Coroutine _showMiceCoroutine;
 
     private void Start()
@@ -25,22 +27,32 @@ public class MouseMinigame : MonoBehaviour
 
         foreach (var mouseHole in _mouseHoles)
         {
-            mouseHole.OnMouseClick += () => OnMouseClick(mouseHole);
+            mouseHole.OnMouseClick += hasMouse => OnMouseClick(mouseHole, hasMouse);
         }
     }
 
-    public void OnMouseClick(MinigameMouseHole mouseHole)
+    public void OnMouseClick(MinigameMouseHole mouseHole, bool hasMouse)
     {
-        _score++;
-
-        PlayMouseSound();
-        StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
-            (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value),
-            () => mouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
-
-        if (_score >= _neededScore)
+        if (hasMouse)
         {
-            Win();
+            _score++;
+
+            AudioManager.Instance.PlaySound(_clickSound);
+            StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
+                (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value),
+                () => mouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
+
+            if (_score >= _neededScore)
+            {
+                Win();
+            }
+        }
+        else
+        {
+            _score = Mathf.Max(0, _score - 2);
+            StartCoroutine(Fader.FadeComponent(_currentMouseHole.Mouse,
+                (value) => _currentMouseHole.Mouse.color = new Color(1, 1, 1, value),
+                () => _currentMouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
         }
     }
 
@@ -75,19 +87,19 @@ public class MouseMinigame : MonoBehaviour
         {
             yield return new WaitForSeconds(Random.Range(0.5f, 1f));
 
-            var mouseHole = _mouseHoles[Random.Range(0, _mouseHoles.Length)];
+            _currentMouseHole = _mouseHoles[Random.Range(0, _mouseHoles.Length)];
             PlayMouseSound();
 
-            mouseHole.Mouse.color = new Color(1, 1, 1, 0);
-            mouseHole.Mouse.enabled = true;
-            StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
-                (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value), null, duration: 0.10f, targetValue: 1f));
+            _currentMouseHole.Mouse.color = new Color(1, 1, 1, 0);
+            _currentMouseHole.Mouse.enabled = true;
+            StartCoroutine(Fader.FadeComponent(_currentMouseHole.Mouse,
+                (value) => _currentMouseHole.Mouse.color = new Color(1, 1, 1, value), null, duration: 0.10f, targetValue: 1f));
 
             yield return new WaitForSeconds(Random.Range(0.7f, 1f));
             
-            StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
-                (value) => mouseHole.Mouse.color = new Color(1, 1, 1, value), 
-                () => mouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
+            StartCoroutine(Fader.FadeComponent(_currentMouseHole.Mouse,
+                (value) => _currentMouseHole.Mouse.color = new Color(1, 1, 1, value), 
+                () => _currentMouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
         }
     }
 

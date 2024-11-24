@@ -8,7 +8,7 @@ public class MinigameMouseHole : MonoBehaviour
 {
     public Image Mouse { get; private set; }
 
-    public event System.Action OnMouseClick;
+    public event System.Action<bool> OnMouseClick;
 
     private void Start()
     {
@@ -18,7 +18,6 @@ public class MinigameMouseHole : MonoBehaviour
 
     public void ClickMouse()
     {
-        if (Mouse.enabled)
-            OnMouseClick?.Invoke();
+        OnMouseClick?.Invoke(Mouse.enabled);
     }
 }
