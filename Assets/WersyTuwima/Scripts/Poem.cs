@@ -25,7 +25,7 @@ public class Poem : MonoBehaviour
             _animator.SetTrigger("Hide");
 
             AudioManager.Instance.PlaySound(_poemSound);
-            GameObject.FindGameObjectWithTag("PoemCounter").GetComponent<PoemCounter>().IncrementPoemsCount();
+            GameObject.FindGameObjectWithTag("PoemCounter").GetComponent<PoemCounter>().IncrementFragmentsCount();
             StartCoroutine(FadeOut());
         }
     }

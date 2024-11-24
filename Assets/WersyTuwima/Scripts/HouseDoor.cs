@@ -7,10 +7,11 @@ public class HouseDoor : InteractableObject
     private Vector3 _teleportPosition;
 
     [SerializeField]
-    private string _noteName;
+    private bool _isEntrance;
 
     private CanvasGroup _fadePanel;
     private Transform _player;
+    private HouseLevel _houseLevel;
 
     private bool _isTeleporting;
 
@@ -18,6 +19,7 @@ public class HouseDoor : InteractableObject
     {
         _fadePanel = GameObject.FindGameObjectWithTag("FadePanel").GetComponent<CanvasGroup>();
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+        _houseLevel = GameObject.FindGameObjectWithTag("HouseLevel").GetComponent<HouseLevel>();
     }
 
     protected override void Interact()
@@ -37,7 +39,7 @@ public class HouseDoor : InteractableObject
         yield return new WaitForSeconds(0.1f);
 
         _player.position = targetPosition;
-        UpdateNote();
+        HandleDoorTransition();
 
         yield return new WaitForSeconds(0.1f);
 
@@ -47,11 +49,15 @@ public class HouseDoor : InteractableObject
         _isTeleporting = false;
     }
 
-    private void UpdateNote()
+    private void HandleDoorTransition()
     {
-        if (!string.IsNullOrEmpty(_noteName))
+        if (_isEntrance)
         {
-            GameObject.FindGameObjectWithTag("Notebook").GetComponent<Notebook>().SetText(_noteName);
+            _houseLevel.Enter();
+        }
+        else
+        {
+            _houseLevel.Exit();
         }
     }
 }

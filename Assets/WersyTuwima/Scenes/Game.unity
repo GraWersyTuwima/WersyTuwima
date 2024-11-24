@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teleportPosition: {x: -33.25, y: -3, z: 0}
-  _noteName: Pusta
+  _isEntrance: 0
 --- !u!212 &24223367
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8090,7 +8090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _teleportPosition: {x: -112.32, y: 6, z: 0}
-  _noteName: Okulary
+  _isEntrance: 1
 --- !u!61 &1098089049
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15158,9 +15158,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1467108144461329804}
   - component: {fileID: 5430452698849237605}
+  - component: {fileID: 5430452698849237606}
   m_Layer: 0
-  m_Name: house-interior
-  m_TagString: Untagged
+  m_Name: HouseLevel
+  m_TagString: HouseLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15944,6 +15945,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5430452698849237606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851486983201005033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 590cd45182b4e954791bf85a12330c60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5787767195321561227
 PrefabInstance:
   m_ObjectHideFlags: 0

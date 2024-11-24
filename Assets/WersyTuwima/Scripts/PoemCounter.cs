@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,27 +18,36 @@ public class PoemCounter : MonoBehaviour
     [SerializeField]
     private AudioClip _poemsCollectedSound;
 
-    private int _poemsCount = 0;
-    private int _poemsNeeded = 1;
+    private int _fragmentsCount = 0;
+
+    private int _poemFragmentsNeeded = 0;
+
+    public event Action OnCompletion;
 
     private void Start()
     {
-        _text.text = $"{_poemsCount}/{_poemsNeeded}";
+        _text.text = $"{_fragmentsCount}/{_poemFragmentsNeeded}";
         _poemCompletedOverlay.SetTitle("Okulary");
     }
 
-    public void IncrementPoemsCount()
+    public void IncrementFragmentsCount()
     {
-        _poemsCount++;
-        _text.text = $"{_poemsCount}/{_poemsNeeded}";
+        _fragmentsCount++;
+        _text.text = $"{_fragmentsCount}/{_poemFragmentsNeeded}";
 
-        if (_poemsCount == _poemsNeeded)
+        if (_fragmentsCount == _poemFragmentsNeeded)
         {
-            PlayCompletionSequence();
+            OnCompletion?.Invoke();
         }
     }
 
-    private void PlayCompletionSequence()
+    public void SetFragmentsNeeded(int fragmentsNeeded)
+    {
+        _poemFragmentsNeeded = fragmentsNeeded;
+        _text.text = $"{_fragmentsCount}/{_poemFragmentsNeeded}";
+    }
+
+    public void PlayCompletionSequence()
     {
         StartCoroutine(AudioManager.Instance.FadeMusic(1f, false));
 

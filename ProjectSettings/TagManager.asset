@@ -10,6 +10,7 @@ TagManager:
   - AleksCollider
   - FadePanel
   - Notebook
+  - HouseLevel
   layers:
   - Default
   - TransparentFX
