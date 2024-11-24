@@ -7,6 +7,6 @@ public class MouseHole : InteractableObject
 
     protected override void Interact()
     {
-        _mouseMinigame.StartMinigame();
+        _mouseMinigame.Interact();
     }
 }

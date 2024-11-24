@@ -16,6 +16,8 @@ public class MouseMinigame : MonoBehaviour
     private MinigameMouseHole _currentMouseHole;
     private Coroutine _showMiceCoroutine;
 
+    private bool _hasWon = false;
+
     private void Start()
     {
         _canvasGroup = GetComponent<CanvasGroup>();
@@ -58,6 +60,8 @@ public class MouseMinigame : MonoBehaviour
 
     public void Win()
     {
+        _hasWon = true;
+
         if (_showMiceCoroutine != null) StopCoroutine(_showMiceCoroutine);
 
         InteractableObject.AnyInteractionsEnabled = true;
@@ -68,8 +72,14 @@ public class MouseMinigame : MonoBehaviour
         _poemSpawner.SpawnPoem();
     }
 
-    public void StartMinigame()
+    public void Interact()
     {
+        if (_hasWon)
+        {
+            PlayMouseSound();
+            return;
+        }
+
         InteractableObject.AnyInteractionsEnabled = false;
         AlexController.Instance.CanMove = false;
         _canvasGroup.interactable = true;
