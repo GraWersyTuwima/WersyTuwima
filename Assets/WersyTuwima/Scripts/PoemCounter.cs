@@ -22,6 +22,7 @@ public class PoemCounter : MonoBehaviour
 
     private int _poemFragmentsNeeded = 0;
 
+    public event Action OnFragmentCollected;
     public event Action OnCompletion;
 
     private void Start()
@@ -32,6 +33,7 @@ public class PoemCounter : MonoBehaviour
 
     public void IncrementFragmentsCount()
     {
+        OnFragmentCollected?.Invoke();
         _fragmentsCount++;
         _text.text = $"{_fragmentsCount}/{_poemFragmentsNeeded}";
 
@@ -39,6 +41,12 @@ public class PoemCounter : MonoBehaviour
         {
             OnCompletion?.Invoke();
         }
+    }
+
+    public void SetFragments(int fragmentsCount)
+    {
+        _fragmentsCount = fragmentsCount;
+        _text.text = $"{_fragmentsCount}/{_poemFragmentsNeeded}";
     }
 
     public void SetFragmentsNeeded(int fragmentsNeeded)
