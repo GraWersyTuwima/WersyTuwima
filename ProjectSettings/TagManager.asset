@@ -11,6 +11,7 @@ TagManager:
   - FadePanel
   - Notebook
   - HouseLevel
+  - WszyscyDlaWszystkich
   layers:
   - Default
   - TransparentFX

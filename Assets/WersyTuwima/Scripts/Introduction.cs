@@ -21,6 +21,9 @@ public class Introduction : MonoBehaviour
         fadePanel.alpha = 1f;
         StartCoroutine(Fader.FadeComponent(fadePanel,
             (value) => fadePanel.alpha = value, null, targetValue: 0f));
+
+        int poemFragmentsNeeded = GameObject.FindGameObjectWithTag("WszyscyDlaWszystkich").GetComponent<WszyscyDlaWszystkichLevel>().PoemFragmentsNeeded;
+        GameObject.FindGameObjectWithTag("PoemCounter").GetComponent<PoemCounter>().SetFragmentsNeeded(poemFragmentsNeeded);
     }
 
     private void OnNotebookVisibilityChanged(bool _)

@@ -13,7 +13,7 @@ public class PoemCounter : MonoBehaviour
     private PoemCompletedOverlay _poemCompletedOverlay;
 
     [SerializeField]
-    private AudioClip _poemRecitationSound;
+    private AudioClip[] _poemRecitations;
 
     [SerializeField]
     private AudioClip _poemsCollectedSound;
@@ -22,13 +22,21 @@ public class PoemCounter : MonoBehaviour
 
     private int _poemFragmentsNeeded = 0;
 
+    public enum Poem
+    {
+        Okulary = 0,
+        WszyscyDlaWszystkich = 1,
+    }
+
+    private Poem _poemType = Poem.WszyscyDlaWszystkich;
+
     public event Action OnFragmentCollected;
     public event Action OnCompletion;
 
     private void Start()
     {
         _text.text = $"{_fragmentsCount}/{_poemFragmentsNeeded}";
-        _poemCompletedOverlay.SetTitle("Okulary");
+        _poemCompletedOverlay.SetTitle("Wszyscy dla wszystkich");
     }
 
     public void IncrementFragmentsCount()
@@ -55,12 +63,26 @@ public class PoemCounter : MonoBehaviour
         _text.text = $"{_fragmentsCount}/{_poemFragmentsNeeded}";
     }
 
+    public void SetPoemType(Poem poemType)
+    {
+        _poemType = poemType;
+
+        string poemName = _poemType switch
+        {
+            Poem.Okulary => "Okulary",
+            Poem.WszyscyDlaWszystkich => "Wszyscy dla wszystkich",
+            _ => throw new ArgumentOutOfRangeException()
+        };
+
+        _poemCompletedOverlay.SetTitle(poemName);
+    }
+
     public void PlayCompletionSequence()
     {
         StartCoroutine(AudioManager.Instance.FadeMusic(1f, false));
 
         AudioManager.Instance.PlaySound(_poemsCollectedSound);
 
-        StartCoroutine(_poemCompletedOverlay.ShowPoemCompletedOverlay(_poemRecitationSound));
+        StartCoroutine(_poemCompletedOverlay.ShowPoemCompletedOverlay(_poemRecitations[(int)_poemType]));
     }
 }

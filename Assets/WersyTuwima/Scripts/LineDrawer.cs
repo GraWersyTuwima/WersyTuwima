@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 
 public class LineDrawer : MonoBehaviour
 {
+
     [SerializeField] private LineRenderer _lineRenderer;
     [SerializeField] private ShirtOutlineChecker _outlineChecker;
 
@@ -11,13 +11,16 @@ public class LineDrawer : MonoBehaviour
     [SerializeField] private float _completionThreshold = 0.9f;
 
     [SerializeField] private AudioClip _failSound;
+    [SerializeField] private AudioClip _successSound;
 
+    private SewingMinigame _sewingMinigame;
     private List<Vector3> _points = new();
 
     private bool _isValid = true;
 
     private void Start()
     {
+        _sewingMinigame = transform.parent.GetComponent<SewingMinigame>();
         _lineRenderer.positionCount = 0;
     }
 
@@ -40,7 +43,6 @@ public class LineDrawer : MonoBehaviour
             else
             {
                 CheckCompletion();
-                ResetDrawing();
             }
         }
         else if (Input.GetMouseButtonUp(0))
@@ -48,8 +50,9 @@ public class LineDrawer : MonoBehaviour
             if (_isValid)
             {
                 CheckCompletion();
-                AudioManager.Instance.PlaySound(_failSound);
+                return;
             }
+            AudioManager.Instance.PlaySound(_failSound);
             ResetDrawing();
         }
     }
@@ -69,15 +72,19 @@ public class LineDrawer : MonoBehaviour
         float coveredLength = CalculateCoveredLength();
 
         float coverage = coveredLength / totalOutlineLength;
-        float realCoverage = coverage / 0.065f; // I hate this magic number, but I have no time to make more logical calculations...
+        coverage *= 1.5f;
 
-        if (realCoverage >= _completionThreshold)
+        Debug.Log(coverage);
+
+        if (coverage >= _completionThreshold)
         {
-            Debug.Log($"Gratulacje! Obrysowa³eœ koszulkê w {realCoverage * 100:F2}%");
+            AudioManager.Instance.PlaySound(_successSound);
+            _sewingMinigame.CompleteMinigame();
         }
         else
         {
             AudioManager.Instance.PlaySound(_failSound);
+            ResetDrawing();
         }
     }
 

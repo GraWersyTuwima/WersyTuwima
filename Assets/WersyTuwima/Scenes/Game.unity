@@ -315,7 +315,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &14959764
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3566,6 +3566,7 @@ GameObject:
   - component: {fileID: 401056681}
   - component: {fileID: 401056680}
   - component: {fileID: 401056679}
+  - component: {fileID: 401056682}
   m_Layer: 5
   m_Name: SewingMinigame
   m_TagString: Untagged
@@ -3603,9 +3604,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401056677}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &401056680
 MonoBehaviour:
@@ -3645,6 +3646,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 401056677}
   m_CullTransparentMesh: 1
+--- !u!114 &401056682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 401056677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd6822432f3db6a408c94ee2e20f7de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shirt: {fileID: 14959763}
+  _lineRenderer: {fileID: 713063311}
 --- !u!1001 &402554001
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4736,6 +4751,8 @@ GameObject:
   m_Component:
   - component: {fileID: 536645081}
   - component: {fileID: 536645080}
+  - component: {fileID: 536645082}
+  - component: {fileID: 536645083}
   m_Layer: 0
   m_Name: Thread
   m_TagString: Untagged
@@ -4813,6 +4830,65 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &536645082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536645079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a25e1b48a29c1e488e96e9cf3c49104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sewingMinigame: {fileID: 401056682}
+--- !u!61 &536645083
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536645079}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.6, y: 1.6}
+    newSize: {x: 1.6, y: 1.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0
 --- !u!1001 &548822204
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5738,7 +5814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &713063312
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5773,8 +5849,9 @@ MonoBehaviour:
   _lineRenderer: {fileID: 713063314}
   _outlineChecker: {fileID: 14959768}
   _minDistance: 0.1
-  _completionThreshold: 0.9
+  _completionThreshold: 0.075
   _failSound: {fileID: 8300000, guid: e6b13761d737a374aaef58eec4259088, type: 3}
+  _successSound: {fileID: 8300000, guid: c62194afb08f51a4fbb727f74f72d4d6, type: 3}
 --- !u!120 &713063314
 LineRenderer:
   serializedVersion: 2
@@ -7334,6 +7411,50 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5ce1b16a82335e4dbd9c7e355820331, type: 3}
+--- !u!1 &911088479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 911088481}
+  - component: {fileID: 911088480}
+  m_Layer: 0
+  m_Name: Wszyscy dla wszystkich
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &911088480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911088479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9581547b91075df44824ec308ba6f5bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &911088481
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 911088479}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &918469131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7573084404785999140, guid: c5ce1b16a82335e4dbd9c7e355820331, type: 3}
@@ -9358,7 +9479,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _text: {fileID: 397795669}
   _poemCompletedOverlay: {fileID: 1422304301}
-  _poemRecitationSound: {fileID: 8300000, guid: 6a740029b95136e43ab810012b068d4c, type: 3}
+  _poemRecitations:
+  - {fileID: 8300000, guid: 6a740029b95136e43ab810012b068d4c, type: 3}
+  - {fileID: 8300000, guid: 441922fc9d5c2694aaffbc531eebac0b, type: 3}
   _poemsCollectedSound: {fileID: 8300000, guid: a4c2e774d69e08d49be7afc292302c57, type: 3}
 --- !u!4 &1190046647 stripped
 Transform:
@@ -13396,7 +13519,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785154073}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a9bfb6ee4618a86499e7f0925d7d2dbc, type: 3}
   m_Name: 
@@ -18267,3 +18390,4 @@ SceneRoots:
   - {fileID: 1920763144}
   - {fileID: 350972985}
   - {fileID: 536645081}
+  - {fileID: 911088481}

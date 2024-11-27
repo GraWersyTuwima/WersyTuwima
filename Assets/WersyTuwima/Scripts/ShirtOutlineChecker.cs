@@ -7,6 +7,6 @@ public class ShirtOutlineChecker : MonoBehaviour
     public bool IsPointValid(Vector2 point)
     {
         Vector2 closestPoint = shirtOutline.ClosestPoint(point);
-        return Vector2.Distance(point, closestPoint) < 0.05f;
+        return Vector2.Distance(point, closestPoint) < 0.1f;
     }
 }

@@ -41,6 +41,7 @@ public class HouseLevel : MonoBehaviour
     public void Enter()
     {
         _notebook.SetText(Notebook.Note.Okulary);
+        _poemCounter.SetPoemType(PoemCounter.Poem.Okulary);
         _poemCounter.SetFragments(_poemFragments);
         _poemCounter.SetFragmentsNeeded(_poemFragmentsNeeded);
         _poemCounter.OnCompletion += ToggleInteractableMirror;
@@ -51,6 +52,7 @@ public class HouseLevel : MonoBehaviour
     public void Exit()
     {
         _notebook.SetText(Notebook.Note.Pusta);
+        _poemCounter.SetPoemType(PoemCounter.Poem.WszyscyDlaWszystkich);
         _poemCounter.SetFragments(0);
         _poemCounter.SetFragmentsNeeded(0);
         _poemCounter.OnCompletion -= ToggleInteractableMirror;
