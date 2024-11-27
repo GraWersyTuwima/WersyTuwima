@@ -52,9 +52,12 @@ public class MouseMinigame : MonoBehaviour
         else
         {
             _score = Mathf.Max(0, _score - 2);
-            StartCoroutine(Fader.FadeComponent(_currentMouseHole.Mouse,
+            if (_currentMouseHole != null)
+            {
+                StartCoroutine(Fader.FadeComponent(_currentMouseHole.Mouse,
                 (value) => _currentMouseHole.Mouse.color = new Color(1, 1, 1, value),
                 () => _currentMouseHole.Mouse.enabled = false, duration: 0.10f, targetValue: 0f));
+            }
         }
     }
 
