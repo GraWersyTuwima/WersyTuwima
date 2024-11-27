@@ -80,6 +80,8 @@ public class LineDrawer : MonoBehaviour
         {
             AudioManager.Instance.PlaySound(_successSound);
             _sewingMinigame.CompleteMinigame();
+            // disable this script
+            enabled = false;
         }
         else
         {
