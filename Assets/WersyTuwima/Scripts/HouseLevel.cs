@@ -10,6 +10,8 @@ public class HouseLevel : MonoBehaviour
     private PoemCounter _poemCounter;
     private InteractableMirror _interactableMirror;
 
+    private WszyscyDlaWszystkichLevel _wszyscyDlaWszystkichLevel;
+
     private int _poemFragments = 0;
     private int _poemFragmentsNeeded = 2;
 
@@ -25,6 +27,7 @@ public class HouseLevel : MonoBehaviour
     {
         _notebook = GameObject.FindGameObjectWithTag("Notebook").GetComponent<Notebook>();
         _poemCounter = GameObject.FindGameObjectWithTag("PoemCounter").GetComponent<PoemCounter>();
+        _wszyscyDlaWszystkichLevel = GameObject.FindGameObjectWithTag("WszyscyDlaWszystkich").GetComponent<WszyscyDlaWszystkichLevel>();
         _interactableMirror = GetComponentInChildren<InteractableMirror>();
         _interactableMirror.PoemCounter = _poemCounter;
         _glasses.enabled = false;
@@ -46,6 +49,9 @@ public class HouseLevel : MonoBehaviour
         _poemCounter.SetFragmentsNeeded(_poemFragmentsNeeded);
         _poemCounter.OnCompletion += ToggleInteractableMirror;
 
+        _wszyscyDlaWszystkichLevel.DetachEvent();
+        _wszyscyDlaWszystkichLevel.Outside = false;
+
         _inside = true;
     }
 
@@ -53,9 +59,12 @@ public class HouseLevel : MonoBehaviour
     {
         _notebook.SetText(Notebook.Note.Pusta);
         _poemCounter.SetPoemType(PoemCounter.Poem.WszyscyDlaWszystkich);
-        _poemCounter.SetFragments(0);
-        _poemCounter.SetFragmentsNeeded(0);
+        _poemCounter.SetFragments(_wszyscyDlaWszystkichLevel.PoemFragments);
+        _poemCounter.SetFragmentsNeeded(_wszyscyDlaWszystkichLevel.PoemFragmentsNeeded);
         _poemCounter.OnCompletion -= ToggleInteractableMirror;
+
+        _wszyscyDlaWszystkichLevel.AttachEvent();
+        _wszyscyDlaWszystkichLevel.Outside = true;
 
         _inside = false;
     }

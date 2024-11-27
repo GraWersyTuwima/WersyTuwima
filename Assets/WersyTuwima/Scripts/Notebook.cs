@@ -26,7 +26,7 @@ public class Notebook : MonoBehaviour
 
     public Dictionary<Note, string> Notes { get; } = new()
     {
-        { Note.Pusta, "Tyle tu miejsca!\nWidzê w oddali parê porozrzucanych\nprzedmiotów." },
+        { Note.Pusta, "Tyle tu miejsca!\nWidzê w oddali... Niæ do szycia?\n\"Krawiec szyje ubrania\"..." },
         { Note.Wprowadzenie, "Witaj w grze Wersy Tuwima!\nGrasz jako Aleks - ch³opiec, który chce\nzapoznaæ siê z jak najwiêksz¹ liczb¹\ntwórczoœci Juliana Tuwima.\nBêdziesz eksplorowa³ miejsca z wierszy\ni bawi³ siê w gry nawi¹zuj¹ce do nich!\n\nMo¿esz otwieraæ ten notatnik klikaj¹c w\nlicznik postêpu w prawym górnym rogu.\n\nMi³ej gry!" },
         { Note.Okulary, "Gdzie one mog¹ byæ?\n\nTa stara szafa...\nPianino w domu?\nMyszy tutaj chodz¹...\nTo lustro... wygl¹da dziwnie." },
         { Note.Koniec, "Koniec gry" },
