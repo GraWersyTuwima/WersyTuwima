@@ -74,13 +74,10 @@ public class LineDrawer : MonoBehaviour
         float coverage = coveredLength / totalOutlineLength;
         coverage *= 1.5f;
 
-        Debug.Log(coverage);
-
         if (coverage >= _completionThreshold)
         {
             AudioManager.Instance.PlaySound(_successSound);
             _sewingMinigame.CompleteMinigame();
-            // disable this script
             enabled = false;
         }
         else
