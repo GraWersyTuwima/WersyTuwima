@@ -1,10 +1,13 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class MouseMinigame : MonoBehaviour
 {
     [SerializeField] private int _score;
     [SerializeField] private int _neededScore = 15;
+
+    [SerializeField] private TextMeshProUGUI _scoreText;
 
     [SerializeField] private AudioClip[] _mouseSounds;
     [SerializeField] private AudioClip _clickSound;
@@ -33,11 +36,17 @@ public class MouseMinigame : MonoBehaviour
         }
     }
 
+    private void UpdateScoreText()
+    {
+        _scoreText.text = $"{_score}/{_neededScore}";
+    }
+
     public void OnMouseClick(MinigameMouseHole mouseHole, bool hasMouse)
     {
         if (hasMouse)
         {
             _score++;
+            UpdateScoreText();
 
             AudioManager.Instance.PlaySound(_clickSound);
             StartCoroutine(Fader.FadeComponent(mouseHole.Mouse,
@@ -52,6 +61,7 @@ public class MouseMinigame : MonoBehaviour
         else
         {
             _score = Mathf.Max(0, _score - 2);
+            UpdateScoreText();
             if (_currentMouseHole != null)
             {
                 StartCoroutine(Fader.FadeComponent(_currentMouseHole.Mouse,
