@@ -28,6 +28,7 @@ public class Notebook : MonoBehaviour
 
         Tuwim1,
         Tuwim2,
+        Tuwim3,
     }
 
     public Dictionary<Note, string> Notes { get; } = new()
@@ -38,7 +39,8 @@ public class Notebook : MonoBehaviour
         { Note.Koniec, "Koniec gry" },
 
         { Note.Tuwim1, "Julian Tuwim jest uznawany za pierwszego\nnowoczesnego t³umacza poezji w Polsce.\nSzczególnie chêtnie przek³ada³ utwory\npoetyckie z jêzyka rosyjskiego, choæ\nzajmowa³ siê tak¿e t³umaczeniem poezji\nfrancuskiej, ³aciñskiej i niemieckiej." },
-        { Note.Tuwim2, "O Julianie Tuwimie " },
+        { Note.Tuwim2, "Julian Tuwim mia³ niezwykle ró¿norodne\nzainteresowania, które obejmowa³y nie\ntylko literaturê, ale tak¿e zagadnienia\ndemonologiczne i kolekcjonerstwo.\nFascynowa³ siê diab³ami i demonami,\no których zgromadzi³ tysi¹ce ksi¹¿ek.\nWyda³ nawet dwie publikacje na ten temat,\nw których przedstawia³ ciekawostki o\ndiab³ach w polskich wierzeniach." },
+        { Note.Tuwim3, "Julian Tuwim by³ znany ze swoich\nnietypowych kolekcji i fascynacji. Jedn¹ z\njego najbardziej osobliwych pasji by³y\nszczury. Poeta zgromadzi³ imponuj¹c¹\nbibliotekê ksi¹¿ek poœwiêconych tym\ngryzoniom i planowa³ napisanie na ich temat\nmonografii oraz dramatu. Choæ te ambitne\nplany nigdy nie zosta³y zrealizowane,\npowsta³ jeden wiersz inspirowany\nszczurami." },
     };
 
     private List<Note> _pages = new()
@@ -54,8 +56,6 @@ public class Notebook : MonoBehaviour
         _text = GetComponentInChildren<TextMeshProUGUI>();
         _parentPanel.raycastTarget = false;
 
-        AddPage(Note.Tuwim1);
-        AddPage(Note.Tuwim2);
         UpdateButtons();
     }
 

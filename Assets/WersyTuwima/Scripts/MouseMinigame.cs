@@ -18,6 +18,7 @@ public class MouseMinigame : MonoBehaviour
     private MinigameMouseHole[] _mouseHoles;
     private MinigameMouseHole _currentMouseHole;
     private Coroutine _showMiceCoroutine;
+    private Notebook _notebook;
 
     private bool _hasWon = false;
 
@@ -29,6 +30,7 @@ public class MouseMinigame : MonoBehaviour
         _canvasGroup.blocksRaycasts = false;
 
         _mouseHoles = GetComponentsInChildren<MinigameMouseHole>();
+        _notebook = GameObject.FindGameObjectWithTag("Notebook").GetComponent<Notebook>();
 
         foreach (var mouseHole in _mouseHoles)
         {
@@ -82,6 +84,7 @@ public class MouseMinigame : MonoBehaviour
         StartCoroutine(Fader.FadeComponent(_canvasGroup,
             (value) => _canvasGroup.alpha = value, null, duration: 0.5f, targetValue: 0f));
 
+        _notebook.AddPage(Notebook.Note.Tuwim3);
         _poemSpawner.SpawnPoem();
     }
 

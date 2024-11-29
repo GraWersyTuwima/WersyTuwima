@@ -8,6 +8,7 @@ public class Piano : InteractableObject
 
     private PoemSpawner _poemSpawner;
     private ButtonPromptMinigame _buttonPromptMinigame;
+    private Notebook _notebook;
 
     private bool _hasPlayedPiano = false;
 
@@ -15,6 +16,7 @@ public class Piano : InteractableObject
     {
         _poemSpawner = GetComponentInChildren<PoemSpawner>();
         _buttonPromptMinigame = GetComponentInChildren<ButtonPromptMinigame>();
+        _notebook = GameObject.FindGameObjectWithTag("Notebook").GetComponent<Notebook>();
         ObjectCollider = GetComponentInChildren<CapsuleCollider2D>();
     }
 
@@ -43,6 +45,7 @@ public class Piano : InteractableObject
 
         _buttonPromptMinigame.OnFinish += () =>
         {
+            _notebook.AddPage(Notebook.Note.Tuwim2);
             _poemSpawner.SpawnPoem();
             InteractableObject.AnyInteractionsEnabled = true;
             AlexController.Instance.CanMove = true;
