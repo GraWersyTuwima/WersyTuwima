@@ -43,7 +43,7 @@ public class HouseLevel : MonoBehaviour
 
     public void Enter()
     {
-        _notebook.SetText(Notebook.Note.Okulary);
+        _notebook.SetTaskNote(Notebook.Note.Okulary);
         _poemCounter.SetPoemType(PoemCounter.Poem.Okulary);
         _poemCounter.SetFragments(_poemFragments);
         _poemCounter.SetFragmentsNeeded(_poemFragmentsNeeded);
@@ -57,7 +57,7 @@ public class HouseLevel : MonoBehaviour
 
     public void Exit()
     {
-        _notebook.SetText(Notebook.Note.Pusta);
+        _notebook.SetTaskNote(Notebook.Note.Pusta);
         _poemCounter.SetPoemType(PoemCounter.Poem.WszyscyDlaWszystkich);
         _poemCounter.SetFragments(_wszyscyDlaWszystkichLevel.PoemFragments);
         _poemCounter.SetFragmentsNeeded(_wszyscyDlaWszystkichLevel.PoemFragmentsNeeded);
