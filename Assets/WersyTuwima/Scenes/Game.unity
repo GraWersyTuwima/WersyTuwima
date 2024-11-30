@@ -2197,7 +2197,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &243278282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6567,7 +6567,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -1200}
   m_SizeDelta: {x: 32, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &761818498
@@ -13191,9 +13191,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1584170136}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!4 &1616467810 stripped
 Transform:
@@ -15405,12 +15405,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Julian Tuwim by\u0142 znany ze swoich\nnietypowych kolekcji i fascynacji.
-    Jedn\u0105 z\njego najbardziej osobliwych pasji by\u0142y\nszczury. Poeta zgromadzi\u0142
-    imponuj\u0105c\u0105\nbibliotek\u0119 ksi\u0105\u017Cek po\u015Bwi\u0119conych
-    tym\ngryzoniom i planowa\u0142 napisanie na ich temat\nmonografii oraz dramatu.
-    Cho\u0107 te ambitne\nplany nigdy nie zosta\u0142y zrealizowane,\npowsta\u0142
-    jeden wiersz inspirowany\nszczurami."
+  m_text: "<line-height=100%>Witaj w grze <i>Wersy Tuwima</i>!\\nGrasz jako Aleks
+    \u2013 ch\u0142opiec, kt\xF3ry pragnie\\njak najlepiej zapozna\u0107 si\u0119
+    z tw\xF3rczo\u015Bci\u0105\\nJuliana Tuwima. Podczas gry b\u0119dziesz\\neksplorowa\u0142
+    miejsca opisane w wierszach\\npoety i bra\u0142 udzia\u0142 w grach inspirowanych\\njego
+    utworami!\\nMo\u017Cesz otwiera\u0107 ten notatnik klikaj\u0105c we\\nwska\u017Anik
+    post\u0119pu w prawym g\xF3rnym rogu.\\nZagl\u0105daj tu od czasu do czasu!\\nMi\u0142ej
+    gry!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd9528dc4dcd7be4e95922488123123a, type: 2}
   m_sharedMaterial: {fileID: -8389304777286286567, guid: bd9528dc4dcd7be4e95922488123123a, type: 2}
