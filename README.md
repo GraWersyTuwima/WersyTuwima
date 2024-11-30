@@ -1,6 +1,17 @@
-# Wersy Tuwima
+# Wersy Tuwima 🎮📚
 
-Gra edukacyjna stworzona na małopolski konkurs "Zagraj (w) Tuwima".
+Gra edukacyjna stworzona na małopolski konkurs polonistyczno-informatyczny "Zagraj (w) Tuwima".
+
+Można powiedzieć, że projekt znajduje się w fazie "Vertical Slice" – wersji demonstracyjnej, która prezentuje kluczowe mechaniki,  ogólną wizję gry i jej potencjał.
+
+## Kluczowe atuty projektu
+
+- 🎨 **Oryginalna oprawa wizualna**
+  * Każda tekstura została stworzona przez nasz zespół, tworząc spójną i unikalną estetykę.
+
+- 🚀 **Elastyczna architektura**
+  * Gra została zaprojektowana tak, by dodawanie nowej zawartości było proste i intuicyjne.
+
 
 ## Licencje
 
@@ -13,6 +24,7 @@ Gra edukacyjna stworzona na małopolski konkurs "Zagraj (w) Tuwima".
   * Superstar: Darmowa do użytku osobistego i komercyjnego
   * Kids Handwriting: Darmowa do użytku osobistego i komercyjnego
 - **Recytacje wierszy:** Autorstwa [@migatomama](https://www.youtube.com/@migatomama) na YouTube.
+
 
 ## Podziękowania
 Szczególne podziękowania dla Zofii Ożarek-Wodzinowskiej ([@migatomama](https://www.youtube.com/@migatomama)) za zgodę na wykorzystanie recytacji wierszy w projekcie.
