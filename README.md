@@ -11,7 +11,14 @@ Można powiedzieć, że projekt znajduje się w fazie "Vertical Slice" – wersj
 
 - 🚀 **Elastyczna architektura**
   * Gra została zaprojektowana tak, by dodawanie nowej zawartości było proste i intuicyjne.
-
+ 
+  
+## Instalacja
+Aby pobrać i zainstalować grę, należy:
+1. Wejść na [stronę z pobraniami](https://github.com/GraWersyTuwima/WersyTuwima/releases/latest)
+2. Kliknąć na `WersyTuwima.zip` w sekcji "Assets"
+3. Rozpakować archiwum
+4. Uruchomić `Wersy Tuwima.exe` w folderze `WersyTuwima`
 
 ## Licencje
 
