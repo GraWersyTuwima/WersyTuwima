@@ -20,6 +20,14 @@ Aby pobrać i zainstalować grę, należy:
 3. Rozpakować archiwum
 4. Uruchomić `Wersy Tuwima.exe` w folderze `WersyTuwima`
 
+## Sterowanie
+- **Poruszanie się**: 
+  * Klawisze WSAD
+  * Klawisze strzałek
+
+- **Interakcja**:
+  * Klawisz E - kontakt z obiektami w grze
+
 ## Licencje
 
 - **Kod źródłowy:** Licencja MIT
